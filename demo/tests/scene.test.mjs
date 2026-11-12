@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { sceneLayout, homeArt } from '../dist/scene.js';
 
-for (const [width,height] of [[1440,900],[1050,930],[1920,1080],[844,390],[390,844],[320,740],[768,1024]]) {
+for (const [width,height] of [[1440,900],[1050,930],[1920,991],[1920,1080],[844,390],[390,844],[320,740],[768,1024]]) {
   test(`all scene objects remain on screen at ${width}×${height}`, () => {
     const layout = sceneLayout(width,height);
     const {worldWidth:w,worldHeight:h,offsetX:dx,offsetY:dy} = layout;
