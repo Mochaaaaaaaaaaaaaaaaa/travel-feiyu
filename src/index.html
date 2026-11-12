@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#cad8af"><meta name="description" content="走进小满的家，点点背包、地图和信箱，开始一段慢慢的旅行。">
+<title>旅行小满 · 风铃山脚的小屋</title>
+<link rel="icon" type="image/svg+xml" href="./assets/leaf.svg">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main id="home-scene" class="home-scene" aria-label="小满的小屋和庭院">
+<h1 class="sr-only">旅行小满 · 风铃山脚的小屋</h1>
+<div id="scene-art" class="scene-art"></div>
+<div class="scene-wallet" aria-label="三叶草金币余额"><span data-icon="clover"></span><strong id="coin-count">80</strong><span>三叶草金币</span></div>
+<button class="settings-button" data-action="settings" aria-label="打开设置"><span data-icon="settings"></span></button>
+<button id="bag-hotspot" class="scene-object" data-object="bag" data-action="bag" aria-label="门边背包：收拾行囊"><span class="object-label">收拾行囊</span></button>
+<button id="map-hotspot" class="scene-object" data-object="map" data-action="map" aria-label="桌上地图：查看旅行"><span class="object-label" id="map-label">旅行地图</span></button>
+<button id="album-hotspot" class="scene-object" data-object="album" data-action="album" aria-label="墙上明信片板：查看旅行手记"><span class="object-label">旅行手记 <span id="album-count">0</span>/9</span></button>
+<button id="shop-hotspot" class="scene-object" data-object="shop" data-action="shop" aria-label="院边小摊：打开林间小铺"><span class="object-label">林间小铺</span></button>
+<button id="garden-hotspot" class="scene-object garden-object" data-object="garden" data-action="harvest" aria-label="收取三叶草金币，获得30三叶草金币"><span class="object-label" id="garden-label">三叶草金币熟啦 · ＋30</span></button>
+<button id="mail-hotspot" class="scene-object" data-object="mail" data-action="mail" aria-label="查看小满的信箱"><span class="mail-dot" hidden></span><span class="object-label">小满的信箱</span></button>
+<button id="frog-hotspot" class="scene-object" data-object="frog" data-action="pet" aria-label="和小满打招呼"><span class="object-label" id="frog-label">小满正在读书</span></button>
+<div id="first-hint" class="first-hint" role="status"><span>点点门边的背包，准备一次旅行</span><button data-action="dismiss-hint" aria-label="收起提示">×</button></div>
+<p id="scene-announcement" class="sr-only" role="status" aria-live="polite"></p>
+</main>
+<dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div><div id="dialog-feedback" class="dialog-feedback" role="status" aria-live="polite"></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#cad8af"><meta name="description" content="走进小满的家，点点背包、地图和信箱，开始一段慢慢的旅行。">
+<title>旅行小满 · 风铃山脚的小屋</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiNlOGVkZGQiLz48cGF0aCBkPSJNMTYgNDJDMTIgMTkgMzQgMTQgNDkgMTVjMSAyMi0xMSAzNi0yNyAyOW0tNyA3IDI1LTI2IiBmaWxsPSIjODA5OTY5IiBzdHJva2U9IiM1MzZkNDYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+Cg==">
+<style>/* One world, with all navigation inside its illustrated objects. */
+:root{--paper:#f7f6ee;--surface:#fffdf6;--ink:#3f4939;--muted:#8c907e;--green:#61794f;--green-dark:#4f6840;--line:#e5e6d9;--serif:Georgia,'Noto Serif SC','Songti SC','SimSun',serif;font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);background:#cad8af;font-synthesis:none}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;color:inherit;border:0;background:none}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible{outline:3px solid #f3d99b;outline-offset:3px}button:hover:not(:disabled){filter:brightness(1.025)}.icon{width:21px;height:21px;display:block;flex-shrink:0}button .icon{pointer-events:none}[data-icon]{display:inline-flex;align-items:center;justify-content:center}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.home-scene{position:relative;isolation:isolate;width:100%;height:100dvh;overflow:hidden}.scene-art,.scene-art>svg{position:absolute;inset:0;width:100%;height:100%;display:block}.scene-art{pointer-events:none}
+.scene-wallet{position:absolute;top:max(22px,env(safe-area-inset-top));left:25px;z-index:2;display:flex;align-items:center;gap:15px;padding:11px 22px;background:#f6edccf2;border:2px solid #b8a67c;border-radius:5px 8px 6px 4px;box-shadow:2px 3px 0 #7e815321;transform:rotate(-2deg);color:#777d52}.scene-wallet:before,.scene-wallet:after{content:'';position:absolute;width:3px;height:6px;border-radius:2px;background:#b8a67c;top:7px}.scene-wallet:before{left:7px}.scene-wallet:after{right:7px}.scene-wallet .icon{width:27px;height:27px}.scene-wallet strong{font:26px Georgia,serif;font-weight:400;min-width:32px;text-align:center}.scene-wallet>span:last-child{font:14px var(--serif);letter-spacing:2px}.settings-button{position:absolute;right:24px;top:max(23px,env(safe-area-inset-top));width:48px;height:48px;display:grid;place-items:center;background:#f3e7bff2;border:2px solid #b8a67c;border-radius:6px;box-shadow:2px 3px 0 #7e815321;z-index:3;color:#81815b;transform:rotate(2deg)}.settings-button .icon{width:25px;height:25px}
+.scene-object{position:absolute;z-index:1;min-width:44px;min-height:44px;border-radius:20px;padding:0;touch-action:manipulation;transition:background .18s,box-shadow .18s}.scene-object:hover,.scene-object:focus-visible{background:#fff3b313;box-shadow:inset 0 0 0 2px #fff2c260,0 0 25px #fff2bb24}.scene-object:focus-visible{outline-offset:2px}.object-label{pointer-events:none;position:absolute;left:50%;bottom:-10px;transform:translate(-50%,5px);width:max-content;max-width:220px;padding:7px 11px;background:#faf0d5f5;border:1px solid #c3b386;color:#6c7850;border-radius:5px;box-shadow:0 3px 7px #68714819;font:13px var(--serif);letter-spacing:.7px;opacity:0;transition:opacity .18s,transform .18s;white-space:nowrap}.object-label:before{content:'';position:absolute;width:7px;height:7px;border-left:1px solid #c3b386;border-top:1px solid #c3b386;background:#faf0d5;top:-5px;left:calc(50% - 4px);transform:rotate(45deg)}.scene-object:hover>.object-label,.scene-object:focus-visible>.object-label,.show-labels .object-label,.has-letter>.object-label{opacity:1;transform:translate(-50%,0)}.garden-object.ripe>.object-label{opacity:1;font-size:12px;bottom:7px}.mail-dot{position:absolute;right:8%;top:4%;width:14px;height:14px;background:#c58b62;border:3px solid #fff1c6;border-radius:50%;animation:mail-pulse 2s ease-in-out infinite}.first-hint{position:absolute;z-index:3;transform:translate(-50%,18px);display:flex;gap:8px;align-items:center;padding:9px 8px 9px 13px;border:1px solid #c1af7d;background:#fff3d6f5;color:#7c7e56;border-radius:7px;box-shadow:0 4px 14px #6b70461a;font-size:12px;white-space:nowrap}.first-hint:before{content:'';position:absolute;left:calc(50% - 5px);top:-6px;transform:rotate(45deg);width:9px;height:9px;border-left:1px solid #c1af7d;border-top:1px solid #c1af7d;background:#fff3d6}.first-hint button{width:27px;height:27px;color:#9e9c79;font-size:20px;line-height:1;padding:0}.hinted{animation:bag-glow 3s ease-in-out infinite}.away .object-label{opacity:0}.away:hover .object-label,.away:focus-visible .object-label{opacity:1}
+.primary-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;background:var(--green);color:#fcfbed;border:1px solid var(--green);border-radius:7px;font-size:12px;letter-spacing:1px;white-space:nowrap}.primary-button:hover:not(:disabled){background:var(--green-dark)}.primary-button .icon{width:16px;height:16px}.primary-button>.icon:last-child{margin-left:6px}.icon-button{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;color:#8b947c;border:1px solid var(--line)}.icon-button .icon{width:16px;height:16px}.text-link{display:flex;align-items:center;justify-content:center;gap:9px;font-size:12px;color:#7a8d60;padding:0}.text-link .icon{width:14px;height:14px}
+dialog{width:min(620px,calc(100% - 32px));max-height:calc(100dvh - 48px);border:1px solid #dbddc9;border-radius:17px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 25px 100px #39473030;overscroll-behavior:contain}dialog::backdrop{background:#333e2e65;backdrop-filter:blur(5px)}.modal-header{display:flex;align-items:flex-start;justify-content:space-between;padding:27px 28px 19px;border-bottom:1px solid var(--line)}.modal-eyebrow{font-family:Georgia,serif;color:#a0a58e;font-size:11px;letter-spacing:2px;margin:0 0 9px}.modal-header h2{font-family:var(--serif);font-size:25px;letter-spacing:2px;font-weight:400;margin:0}.modal-header p:last-child{font-size:11px;color:#92977f;margin:10px 0 0;line-height:1.8}.modal-body{padding:23px 28px 27px}.modal-footer{padding:19px 28px;background:#f1f2e7;border-top:1px solid var(--line);border-radius:0 0 17px 17px}.modal-footer>.primary-button{width:100%;padding:14px}.gift-note{display:flex;align-items:center;gap:8px;font-size:12px;line-height:1.9;color:#8d9479;background:#f1f2e5;border:1px dashed #dde2cb;padding:11px 13px;border-radius:7px;margin-bottom:23px}.gift-note .icon{width:17px;height:17px;color:#8a9c72;flex-shrink:0}.field-heading{display:flex;align-items:center;justify-content:space-between;margin:0 0 12px;font-size:12px;font-weight:500;letter-spacing:1px}.field-heading span{font-size:11px;color:#9ca18c;font-weight:400;letter-spacing:0}.choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:23px}.choice{border:1px solid #e0e3d2;border-radius:10px;position:relative;background:#fafaf0;text-align:center;padding:12px 7px}.choice.selected{background:#eaf0dd;border-color:#8da372;box-shadow:inset 0 0 0 1px #8da372}.choice .item-art{height:77px;display:block;width:100%;margin:auto}.choice svg{height:100%;width:auto}.choice strong{display:block;font-size:11px;font-weight:500;letter-spacing:.5px}.choice small{display:block;font-size:11px;color:#969c84;margin-top:7px;line-height:1.7}.choice .quantity{position:absolute;top:8px;right:9px;font-size:11px;color:#8e967b}.selection-check{display:flex;position:absolute;top:7px;left:7px;border-radius:50%;width:16px;height:16px;background:#78925c;color:#fff}.selection-check .icon{width:12px;height:12px}.choice.empty-choice .item-art{display:flex;justify-content:center;align-items:center;color:#b1b99d}.choice.empty-choice .item-art .icon{width:30px;height:30px}.trip-summary{display:flex;align-items:center;justify-content:space-between;border:1px solid #e2e4d3;border-radius:8px;padding:14px;background:#f9f8ee;font-size:12px;color:#93997f;gap:12px}.trip-summary strong{color:#758a5c;font-weight:500;font-size:11px}.modal-footer p{text-align:center;font-size:11px;color:#949c82;margin:10px 0 0;line-height:1.7}.shop-balance{display:flex;align-items:center;gap:6px;color:#819168;font-size:12px;margin-top:5px}.shop-balance .icon{width:17px;height:17px}.shop-list{display:flex;flex-direction:column;gap:12px}.shop-item{display:flex;align-items:center;gap:15px;border:1px solid #e3e5d5;padding:12px;border-radius:10px;background:#fafaf1}.shop-art{width:74px;height:74px;flex-shrink:0;background:#efefdf;border-radius:9px}.shop-art svg{width:100%;height:100%}.shop-copy{flex:1;min-width:0}.shop-copy h3{font-size:12px;letter-spacing:1px;margin:0 0 7px;font-weight:500}.shop-copy p{font-size:11px;color:#949b82;margin:0 0 7px;line-height:1.8}.shop-copy small{font-size:11px;color:#7e9369}.buy-button{min-width:83px;border:1px solid #cbd6b8;border-radius:6px;color:#708557;padding:9px 10px;font-size:12px;display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap}.buy-button .icon{width:13px;height:13px}.shop-owned{display:block;text-align:right;font-size:10px;color:#9ba18c;margin-top:8px}.shop-group-title{font-size:11px;font-weight:500;letter-spacing:1px;margin:8px 0 2px;color:#8d967c}.album-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#91997f;margin-bottom:15px}.album-top strong{color:#6f8655;font-size:15px;font-weight:500}.filter-row{display:flex;gap:8px;margin-bottom:21px;flex-wrap:wrap}.filter-button{padding:7px 12px;border:1px solid var(--line);border-radius:20px;font-size:12px;color:#959b85}.filter-button.selected{background:#e5ecd9;color:#6e8456;border-color:#c9d7b8}.album-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px 12px}.album-card{position:relative;padding:6px;background:#fffef8;border:1px solid #e3e1d1;border-radius:5px;min-width:0;text-align:left}.album-card>svg{width:100%;height:auto;display:block}.album-card h3{font-family:var(--serif);font-size:11px;letter-spacing:.3px;font-weight:400;margin:9px 2px 7px}.album-card small{display:block;font-size:10px;color:#a1a58e;margin:0 2px 4px}.album-card.locked{background:#f2f2e8}.album-card.locked>svg{filter:grayscale(.7);opacity:.35}.album-card.locked .lock-icon{position:absolute;top:24%;left:calc(50% - 10px);color:#879575}.album-card.locked .icon{width:20px;height:20px}.empty-album-message{font-size:11px;color:#889578;padding:13px 15px;border:1px dashed #d7dfc8;border-radius:7px;line-height:1.9;margin-bottom:20px}.postcard-full{background:#fffdf1;border:1px solid #dedac4;padding:12px 12px 21px;transform:rotate(-1deg);box-shadow:0 6px 15px #6b654016}.postcard-full>svg{width:100%;height:auto;display:block}.postcard-full h3{font-family:var(--serif);font-size:20px;letter-spacing:3px;text-align:center;font-weight:400;margin:18px 0 8px}.postcard-place{display:flex;justify-content:center;align-items:center;gap:7px;font-size:12px;color:#9a9d83}.postcard-place .icon{width:13px;height:13px}.letter{position:relative;font-family:var(--serif);font-size:14px;line-height:2.2;color:#848971;margin:25px 7px 4px;letter-spacing:.7px}.letter-sign{text-align:right;font-size:12px;color:#8c9877;margin-top:12px}.return-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:#e8efdc;color:#7c9163;font-size:12px;border-radius:20px;margin-bottom:17px}.return-badge .icon{width:14px;height:14px}.travel-state{text-align:center}.travel-state .travel-landscape{border-radius:9px;overflow:hidden;margin-bottom:18px}.travel-state svg{width:100%;display:block}.travel-state h3{font-family:var(--serif);font-size:23px;font-weight:400;letter-spacing:2px}.travel-state p{font-size:11px;line-height:2;color:#919a80}.travel-clock{font-family:Georgia,serif;font-size:38px;letter-spacing:2px;color:#738957;margin:20px 0 8px}.secondary-button{padding:11px 15px;border:1px solid #d3dbc5;color:#7b8e65;border-radius:7px;font-size:11px}.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;max-width:calc(100% - 40px);width:max-content;display:flex;align-items:center;gap:9px;background:#526846f2;color:#f9f7e8;border:1px solid #7c9066;padding:13px 20px;border-radius:10px;box-shadow:0 7px 25px #3d513723;font-size:12px;line-height:1.7;z-index:20;transition:opacity .2s,transform .2s}.toast.visible{opacity:1;transform:translate(-50%,0)}.toast .icon{width:17px;height:17px}.reset-copy{font-size:12px;color:#8a937c;line-height:2;margin:0 0 22px}.reset-actions{display:flex;gap:12px;justify-content:flex-end}.new-stamp{position:absolute;top:10px;right:10px;border:1px solid #ac9772;color:#9b8764;border-radius:50%;font-family:Georgia,serif;font-size:11px;letter-spacing:1px;width:41px;height:41px;display:grid;place-items:center;transform:rotate(12deg);background:#f9f3dcdd}.trip-time-label{font-size:12px;color:#a0a68e}
+
+.map-modal{text-align:center}.route-art{max-width:350px;margin:0 auto 20px}.route-art svg{width:100%;display:block}.map-modal>p{font:14px/2.2 var(--serif);color:#869476}.map-destinations{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}.map-destinations svg{width:100%;display:block;border-radius:6px}.map-destinations span{display:block;margin-top:9px;font:12px var(--serif);color:#8c967a}.settings-body .setting-row{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:18px 0;border-bottom:1px solid var(--line)}.setting-row:first-child{padding-top:0}.setting-row strong{font-size:13px;font-weight:500}.setting-row p,.experience-tools p,.save-explanation{font-size:11px;line-height:1.9;color:#8b957a}.setting-row .secondary-button,.experience-tools .secondary-button{display:flex;align-items:center;gap:7px;white-space:nowrap}.setting-row .secondary-button .icon{width:16px;height:16px}.save-explanation{padding:14px 0;margin:0}.experience-tools{padding:19px;background:#f1f2e5;border:1px dashed #d7ddc7;border-radius:8px}.experience-tools>.text-link{margin-top:18px;font-size:11px}.dialog-feedback{display:none;position:sticky;bottom:0;align-items:center;justify-content:center;gap:8px;padding:10px 16px;background:#e6edd8;color:#637b4b;font-size:11px;line-height:1.8;border-top:1px solid #d5dfc4}.dialog-feedback.visible{display:flex}.dialog-feedback .icon{width:16px;height:16px}
+@keyframes mail-pulse{50%{box-shadow:0 0 0 10px #e9d2a820}}@keyframes bag-glow{50%{box-shadow:0 0 25px #fff4b540,inset 0 0 0 2px #fff4b533}}@keyframes frog-breathe{50%{opacity:.94}}#frog-at-home{animation:frog-breathe 4s ease-in-out infinite}
+@media(max-width:700px){.scene-wallet{top:max(16px,env(safe-area-inset-top));left:16px;padding:9px 15px;gap:11px}.scene-wallet strong{font-size:23px}.scene-wallet .icon{width:23px;height:23px}.scene-wallet>span:last-child{font-size:12px}.settings-button{width:43px;height:43px;right:17px;top:max(17px,env(safe-area-inset-top))}.settings-button .icon{width:23px;height:23px}.object-label{font-size:11px;padding:6px 8px;letter-spacing:0}.first-hint{font-size:10px;padding:6px 6px 6px 9px;gap:4px;max-width:calc(100vw - 28px);transform:translate(-20%,12px)}.first-hint:before{left:20%}.garden-object.ripe>.object-label{font-size:10px;bottom:3px}.mail-dot{width:12px;height:12px}.toast{bottom:25px;font-size:11px;padding:11px 16px}.modal-header{padding:23px 20px 17px}.modal-body{padding:20px}.modal-footer{padding:17px 20px}.modal-header h2{font-size:23px}.modal-header p:last-child{font-size:11px}.choice-grid{gap:8px}.choice{padding:12px 3px}.choice .item-art{height:62px}.choice strong{font-size:11px}.choice small{font-size:10px}.choice .quantity{font-size:10px}.trip-summary{font-size:11px;padding:12px}.trip-summary strong{font-size:11px}.shop-item{gap:10px;padding:10px}.shop-art{width:58px;height:58px}.shop-copy h3{font-size:11px}.shop-copy p,.shop-copy small{font-size:10px}.buy-button{min-width:72px;padding:8px;font-size:11px}.album-grid{gap:11px 8px}.album-card h3{font-size:11px;letter-spacing:0}.album-card small{font-size:9px}.album-card{padding:5px}.filter-button{font-size:11px;padding:7px 10px}.filter-row{gap:5px}.postcard-full{padding:9px 9px 17px}.postcard-full h3{font-size:18px}.letter{font-size:13px}.gift-note{font-size:11px}.trip-time-label{font-size:11px}.setting-row p{font-size:10px}.setting-row .secondary-button{font-size:10px;padding:10px}.map-destinations{gap:8px}.map-destinations span{font-size:10px}}
+@media(max-width:380px){.modal-body{padding:16px}.modal-header{padding-left:16px;padding-right:16px}.choice .item-art{height:55px}.choice small{font-size:9px}.choice strong{font-size:10px}.trip-summary{flex-wrap:wrap}.shop-item{gap:8px}.shop-art{width:49px;height:49px}.shop-copy p{display:none}.field-heading{gap:7px;flex-wrap:wrap}.scene-wallet{left:12px}.settings-button{right:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.garden-object.ripe>.object-label{top:-5px;bottom:auto}.garden-object.ripe>.object-label:before{display:none}
+
+/* Content authoring stays inside settings, keeping the home scene quiet. */
+#event-json { display:block; width:100%; min-height:300px; margin:12px 0; padding:14px; box-sizing:border-box; border:1px solid #a9b58a; border-radius:12px; background:#fffcf0; color:#435137; font:14px/1.6 Consolas,monospace; resize:vertical; }
+.event-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.event-actions input { max-width:180px; }
+.event-log { text-align:left; margin:20px 0; }
+.event-log article { padding:12px 16px; margin:10px 0; border-radius:12px; background:#eef0d9; }
+.event-log article p { margin:6px 0; }
+.event-log small { color:#63724c; }
+</style>
+</head>
+<body>
+<main id="home-scene" class="home-scene" aria-label="小满的小屋和庭院">
+<h1 class="sr-only">旅行小满 · 风铃山脚的小屋</h1>
+<div id="scene-art" class="scene-art"></div>
+<div class="scene-wallet" aria-label="三叶草金币余额"><span data-icon="clover"></span><strong id="coin-count">80</strong><span>三叶草金币</span></div>
+<button class="settings-button" data-action="settings" aria-label="打开设置"><span data-icon="settings"></span></button>
+<button id="bag-hotspot" class="scene-object" data-object="bag" data-action="bag" aria-label="门边背包：收拾行囊"><span class="object-label">收拾行囊</span></button>
+<button id="map-hotspot" class="scene-object" data-object="map" data-action="map" aria-label="桌上地图：查看旅行"><span class="object-label" id="map-label">旅行地图</span></button>
+<button id="album-hotspot" class="scene-object" data-object="album" data-action="album" aria-label="墙上明信片板：查看旅行手记"><span class="object-label">旅行手记 <span id="album-count">0</span>/9</span></button>
+<button id="shop-hotspot" class="scene-object" data-object="shop" data-action="shop" aria-label="院边小摊：打开林间小铺"><span class="object-label">林间小铺</span></button>
+<button id="garden-hotspot" class="scene-object garden-object" data-object="garden" data-action="harvest" aria-label="收取三叶草金币，获得30三叶草金币"><span class="object-label" id="garden-label">三叶草金币熟啦 · ＋30</span></button>
+<button id="mail-hotspot" class="scene-object" data-object="mail" data-action="mail" aria-label="查看小满的信箱"><span class="mail-dot" hidden></span><span class="object-label">小满的信箱</span></button>
+<button id="frog-hotspot" class="scene-object" data-object="frog" data-action="pet" aria-label="和小满打招呼"><span class="object-label" id="frog-label">小满正在读书</span></button>
+<div id="first-hint" class="first-hint" role="status"><span>点点门边的背包，准备一次旅行</span><button data-action="dismiss-hint" aria-label="收起提示">×</button></div>
+<p id="scene-announcement" class="sr-only" role="status" aria-live="polite"></p>
+</main>
+<dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div><div id="dialog-feedback" class="dialog-feedback" role="status" aria-live="polite"></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script type="module">
+// Use local relative files, e.g. ./assets/character.webp. Keep null for Demo art.
+const ASSETS = {
+  background: null, // Landscape backdrop; house and interactive props remain separate.
+  character: null,
+  clover: null,
+  currency: null,
+  items: { rice: null, sandwich: null, cake: null, map: null, cup: null },
+};
+const BUNDLED_ASSETS = {};
+function assetPath(path) {
+  if (typeof path !== 'string' || !/^\.\/assets\/[a-zA-Z0-9_./-]+\.(png|webp|svg|jpg)$/.test(path) || path.includes('..')) throw new Error('美术必须使用 assets 下的本地图片。');
+  return BUNDLED_ASSETS[path] || path;
+}
+function imageArt(path, fallback, viewBox = '0 0 120 120') {
+  if (!path) return fallback;
+  return `<svg viewBox="${viewBox}" aria-hidden="true"><image href="${assetPath(path)}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"/></svg>`;
+}
+
+const EVENT_KEY = 'traveling-feiyv-events-v1';
+const DEFAULT_EVENTS = [
+  { id: 'hill-breeze', title: '山风的礼物', text: '沿着山路捡到几片闪亮的三叶草。', theme: 'hill', tool: null, weight: 1, at: 0.5, coins: 8 },
+  { id: 'town-tea', title: '街角热茶', text: '小店老板请小满喝茶，还送了一点路费。', theme: 'town', tool: null, weight: 1, at: 0.5, coins: 6 },
+  { id: 'lake-light', title: '湖边微光', text: '小满在芦苇旁找到了一枚三叶草金币。', theme: 'lake', tool: null, weight: 1, at: 0.5, coins: 10 },
+];
+const escapeText = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+function validateEvents(value) {
+  if (!Array.isArray(value) || value.length > 100) throw new Error('事件必须是数组，最多 100 条。');
+  const ids = new Set();
+  return value.map(event => {
+    if (!event || typeof event !== 'object' || Object.keys(event).some(key => !['id','title','text','theme','tool','weight','at','coins'].includes(key))) throw new Error('事件包含未知字段。');
+    const { id, title, text, theme, tool, weight, at, coins } = event;
+    if (typeof id !== 'string' || !/^[a-z][a-z0-9-]{0,63}$/.test(id) || ids.has(id)) throw new Error('事件 ID 必须唯一，使用小写字母、数字和连字符。');
+    if (typeof title !== 'string' || !title.trim() || title.length > 60 || typeof text !== 'string' || !text.trim() || text.length > 500) throw new Error('事件需要标题（1–60 字）和正文（1–500 字）。');
+    if (!['any','hill','town','lake'].includes(theme) || ![null,'map','cup'].includes(tool)) throw new Error('目的地或所需道具无效。');
+    if (!Number.isInteger(weight) || weight < 1 || weight > 100 || !Number.isFinite(at) || at < 0.1 || at > 0.9 || !Number.isInteger(coins) || coins < 0 || coins > 100) throw new Error('权重须为 1–100，发生进度为 0.1–0.9，金币为 0–100。');
+    ids.add(id);
+    return { id, title, text, theme, tool, weight, at, coins };
+  });
+}
+function parseEvents(raw) {
+  if (typeof raw !== 'string' || raw.length > 100000) throw new Error('事件 JSON 不能超过 100000 字符。');
+  return validateEvents(JSON.parse(raw));
+}
+function planEvent(events, theme, tool, start, end, tripId, random = Math.random) {
+  const candidates = validateEvents(events).filter(event => (event.theme === 'any' || event.theme === theme) && (!event.tool || event.tool === tool));
+  const total = candidates.reduce((sum, event) => sum + event.weight, 0);
+  let roll = random() * total;
+  const event = candidates.find(event => (roll -= event.weight) < 0);
+  return event ? { ...event, eventId: `${tripId}:0`, occurredAt: start + Math.floor((end - start) * event.at), rewarded: false } : null;
+}
+
+const SAVE_KEY = 'traveling-feiyv-prototype-v1';
+const GROW_TIME = 30000;
+const ITEMS = [
+  { id: 'rice', name: '梅子饭团', type: 'food', price: 20, duration: 20000, icon: 'rice', description: '朴素的一餐，也能走到喜欢的地方。', effect: '轻快散步 · 20 秒' },
+  { id: 'sandwich', name: '野餐三明治', type: 'food', price: 35, duration: 30000, icon: 'sandwich', description: '带上两片阳光，去远一点的地方。', effect: '悠闲漫游 · 30 秒' },
+  { id: 'cake', name: '蜂蜜小蛋糕', type: 'food', price: 50, duration: 40000, icon: 'cake', description: '把甜甜的心意，留给路上的朋友。', effect: '慢慢远行 · 40 秒' },
+  { id: 'map', name: '折叠地图', type: 'tool', price: 60, icon: 'map', description: '沿着绿色的小路，山野就在前方。', effect: '更容易遇见山野风光 · 永久使用' },
+  { id: 'cup', name: '搪瓷小杯', type: 'tool', price: 80, icon: 'cup', description: '在街角坐坐，听一听小镇的故事。', effect: '更容易遇见小镇风光 · 永久使用' },
+];
+const CARDS = [
+  { id: 'hill-1', theme: 'hill', place: '风铃山野', title: '把风装进口袋', note: '山坡上的风有青草味。我坐了一会儿，替你听了很久的风。', caption: '今天的风，刚刚好。' },
+  { id: 'hill-2', theme: 'hill', place: '风铃山野', title: '云朵的慢车', note: '看见一朵像饭团的云。追了半座山，它还是慢慢地走。', caption: '跟着云朵，慢慢走。' },
+  { id: 'hill-3', theme: 'hill', place: '风铃山野', title: '山间小憩', note: '在树下睡了一个午觉。醒来时，一片叶子轻轻落在帽子上。', caption: '树荫里，藏着一个好梦。' },
+  { id: 'town-1', theme: 'town', place: '橘灯小镇', title: '街角的一杯暖', note: '小店的老板送了我一杯热茶。杯子很暖，故事也是。', caption: '小镇很小，温柔很多。' },
+  { id: 'town-2', theme: 'town', place: '橘灯小镇', title: '面包香的小巷', note: '顺着面包的香味拐了三个弯。下次想带你一起来。', caption: '今天的路，有面包香。' },
+  { id: 'town-3', theme: 'town', place: '橘灯小镇', title: '灯亮的时候', note: '天黑前，小巷的灯一盏盏亮了。忽然有点想念家里的那盏。', caption: '灯火亮起，就想回家。' },
+  { id: 'lake-1', theme: 'lake', place: '月牙湖畔', title: '寄一片湖光', note: '湖面亮晶晶的，像撒了一把星星。我挑了最亮的一片寄给你。', caption: '把湖面的光，寄给你。' },
+  { id: 'lake-2', theme: 'lake', place: '月牙湖畔', title: '芦苇的悄悄话', note: '芦苇沙沙地响，小鱼从桥下游过。什么都没做，也是很好的一天。', caption: '听水声，就很好。' },
+  { id: 'lake-3', theme: 'lake', place: '月牙湖畔', title: '等一场日落', note: '今天走得不远，刚好赶上日落。橘色的天空，像你准备的小蛋糕。', caption: '日落之前，慢一点。' },
+];
+const itemById = id => ITEMS.find(item => item.id === id);
+const cardById = id => CARDS.find(card => card.id === id);
+function createState(now = Date.now()) {
+  return { version: 1, eventHistory: [], tripEvent: null, lastSettledAt: now, coins: 80, inventory: { rice: 2, sandwich: 0, cake: 0, map: 1, cup: 0 }, food: 'rice', tool: 'map', status: 'home', departedAt: null, arrivesAt: null, pendingCard: null, album: {}, trips: 0, gardenReadyAt: now, sound: false };
+}
+function tick(state, now = Date.now()) {
+  now = Math.max(now, state.lastSettledAt || 0); state.lastSettledAt = now;
+  if (state.status === 'preparing' && now >= state.departedAt) state.status = 'traveling';
+  if (state.status === 'traveling' && now >= state.arrivesAt) state.status = 'returned';
+  return state;
+}
+function harvest(state, now = Date.now()) {
+  if (now < state.gardenReadyAt) return false;
+  state.coins += 30; state.gardenReadyAt = now + GROW_TIME; return true;
+}
+function buy(state, id) {
+  const item = itemById(id);
+  if (!item || state.coins < item.price || (item.type === 'tool' && state.inventory[id])) return false;
+  state.coins -= item.price; state.inventory[id] += 1; return true;
+}
+function choose(state, id) {
+  if (state.status !== 'home') return false;
+  if (id === 'none') { state.tool = null; return true; }
+  const item = itemById(id);
+  if (!item || state.inventory[id] < 1) return false;
+  state[item.type === 'food' ? 'food' : 'tool'] = id; return true;
+}
+function pickCard(tool, random = Math.random) {
+  const roll = random();
+  const themes = tool === 'map' ? ['hill', 'town', 'lake'] : tool === 'cup' ? ['town', 'hill', 'lake'] : ['lake', 'town', 'hill'];
+  const theme = themes[roll < (tool ? 0.6 : 1 / 3) ? 0 : roll < (tool ? 0.8 : 2 / 3) ? 1 : 2];
+  return CARDS.filter(card => card.theme === theme)[Math.min(2, Math.floor(random() * 3))].id;
+}
+function depart(state, now = Date.now(), random = Math.random, events = DEFAULT_EVENTS) {
+  validateEvents(events);
+  const food = itemById(state.food);
+  if (state.status !== 'home' || !food || state.inventory[food.id] < 1) return false;
+  state.inventory[food.id] -= 1; state.status = 'preparing';
+  state.departedAt = now + 2000; state.arrivesAt = state.departedAt + food.duration;
+  state.pendingCard = pickCard(state.tool, random);
+  state.tripEvent = planEvent(events, cardById(state.pendingCard).theme, state.tool, state.departedAt, state.arrivesAt, `${now}-${state.trips}`, random); return true;
+}
+function fastForward(state, now = Date.now()) {
+  if (!['preparing', 'traveling'].includes(state.status)) return false;
+  state.departedAt = Math.min(state.departedAt, now); state.arrivesAt = now; if (state.tripEvent) state.tripEvent.occurredAt = Math.min(state.tripEvent.occurredAt, now); tick(state, now); return true;
+}
+function claim(state) {
+  if (state.status !== 'returned' || !cardById(state.pendingCard)) return null;
+  const id = state.pendingCard;
+  if (state.tripEvent && !state.tripEvent.rewarded) {
+    state.coins += state.tripEvent.coins; state.tripEvent.rewarded = true;
+    state.eventHistory = [...state.eventHistory, { ...state.tripEvent }].slice(-100);
+  }
+  state.tripEvent = null;
+  state.album[id] = (state.album[id] || 0) + 1; state.trips += 1; state.status = 'home';
+  state.pendingCard = null; state.departedAt = null; state.arrivesAt = null;
+  if (!state.inventory[state.food]) state.food = ITEMS.find(item => item.type === 'food' && state.inventory[item.id])?.id || null;
+  return id;
+}
+function restore(raw, now = Date.now()) {
+  try {
+    const state = JSON.parse(raw);
+    const integer = value => Number.isSafeInteger(value) && value >= 0;
+    const timestamp = value => Number.isFinite(value) && value >= 0;
+    if (!state || state.version !== 1 || !integer(state.coins) || !integer(state.trips) || !state.inventory || !state.album || Array.isArray(state.inventory) || Array.isArray(state.album) || typeof state.sound !== 'boolean' || !timestamp(state.gardenReadyAt)) throw new Error('Invalid save');
+    if (!['home', 'preparing', 'traveling', 'returned'].includes(state.status)) throw new Error('Invalid status');
+    for (const item of ITEMS) if (!integer(state.inventory[item.id]) || (item.type === 'tool' && state.inventory[item.id] > 1)) throw new Error('Invalid inventory');
+    if (state.food !== null && !ITEMS.some(item => item.id === state.food && item.type === 'food')) throw new Error('Invalid food');
+    if (state.tool !== null && (!ITEMS.some(item => item.id === state.tool && item.type === 'tool') || !state.inventory[state.tool])) throw new Error('Invalid tool');
+    for (const [id, count] of Object.entries(state.album)) if (!cardById(id) || !integer(count) || count < 1) throw new Error('Invalid album');
+    if (state.status !== 'home' && (!timestamp(state.departedAt) || !timestamp(state.arrivesAt) || state.arrivesAt < state.departedAt || !cardById(state.pendingCard))) throw new Error('Invalid trip');
+    state.eventHistory ??= []; state.tripEvent ??= null; state.lastSettledAt ??= 0;
+    if (!timestamp(state.lastSettledAt) || !Array.isArray(state.eventHistory) || state.eventHistory.length > 100) throw new Error('Invalid events');
+    for (const event of [...state.eventHistory, ...(state.tripEvent ? [state.tripEvent] : [])]) {
+      const { eventId, occurredAt, rewarded, ...definition } = event;
+      validateEvents([definition]);
+      if (typeof eventId !== 'string' || eventId.length > 100 || !timestamp(occurredAt) || typeof rewarded !== 'boolean') throw new Error('Invalid event snapshot');
+    }
+    if (state.tripEvent && (state.status === 'home' || state.tripEvent.rewarded || state.tripEvent.occurredAt < state.departedAt || state.tripEvent.occurredAt > state.arrivesAt)) throw new Error('Invalid pending event');
+    if (state.eventHistory.some(event => !event.rewarded)) throw new Error('Invalid history');
+    return tick(state, now);
+  } catch { return createState(now); }
+}
+
+const paths = {
+  settings: '<circle cx="12" cy="12" r="3"/><path d="m9 3 6 0 .7 3 2.5 1.4 3-.8 2 5-2.6 1.7-.6 2.8 1.6 2.6-4.5 3-2.2-2-2.9.1-2.1 2-4.7-2.8 1.4-2.7-.7-2.8L1 11l2-5 3 .8L8.4 5 9 3Z"/>',
+  leaf: '<path d="M5 17C2 7 12 3 21 3c0 10-5 16-13 14M4 21 16 8"/>',
+  home: '<path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-8h6v8"/>',
+  bag: '<rect x="5" y="7" width="14" height="14" rx="4"/><path d="M8 7V5a4 4 0 0 1 8 0v2M5 11h14M9 15h6v4H9z"/>',
+  shop: '<path d="M3 9h18l-2-6H5L3 9Zm1 0v12h16V9M3 9c0 4 4 4 4 0 0 4 5 4 5 0 0 4 5 4 5 0 0 4 4 4 4 0M9 21v-7h6v7"/>',
+  card: '<rect x="3" y="5" width="18" height="15" rx="2"/><path d="m4 17 5-5 4 4 3-3 5 4M16 8h2"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"/>',
+  'sound-off': '<path d="M11 4 6 8H3v8h3l5 4V4Zm5 5 6 6m0-6-6 6"/>',
+  sound: '<path d="M11 4 6 8H3v8h3l5 4V4Zm5 4c3 2 3 6 0 8m3-11c5 4 5 10 0 14"/>',
+  clover: '<path d="M12 12C0 11 3 0 9 4c2 1 3 5 3 8 1-12 12-9 8-3-1 2-5 3-8 3 12 1 9 12 3 8-2-1-3-5-3-8-1 12-12 9-8 3 1-2 5-3 8-3Zm0 0 6 10"/>',
+  arrow: '<path d="M4 12h16m-6-6 6 6-6 6"/>',
+  wind: '<path d="M3 8h12c7 0 4-8 0-5M3 12h17M3 16h10c7 0 4 8 0 5"/>',
+  heart: '<path d="M12 21 3 12C-3 4 8 0 12 7c4-7 15-3 9 5l-9 9Z"/>',
+  sprout: '<path d="M12 22V10M12 15C1 15 2 6 3 5c9 0 9 6 9 10Zm0-4C12 2 21 2 22 3c0 8-6 8-10 8Z"/>',
+  flower: '<path d="M12 8c-6-12-13 1-5 4-12 6 1 13 5 5 6 12 13-1 5-5 12-6-1-13-5-4Z"/><circle cx="12" cy="12" r="3"/>',
+  compass: '<circle cx="12" cy="12" r="10"/><path d="m16 7-3 7-6 3 3-7 6-3Z"/>',
+  check: '<path d="m5 12 4 4L20 5"/>',
+  forward: '<path d="m3 5 8 7-8 7V5Zm9 0 8 7-8 7V5Zm9 0v14"/>',
+  refresh: '<path d="M20 7V2m0 5h-5M4 17v5m0-5h5M4 9a8 8 0 0 1 14-4l2 2M4 17l2 2a8 8 0 0 0 14-4"/>',
+  close: '<path d="m6 6 12 12M18 6 6 18"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>',
+  mail: '<rect x="2" y="5" width="20" height="15" rx="2"/><path d="m2 6 10 8L22 6"/>',
+  lock: '<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4m-4 5v2"/>',
+};
+function icon(name, cls = '') { if (name === 'clover' && ASSETS.currency) return `<svg class="icon ${cls}" viewBox="0 0 24 24" aria-hidden="true"><image href="${assetPath(ASSETS.currency)}" width="24" height="24"/></svg>`; return `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || paths.leaf}</svg>`; }
+
+function frogMarkup(x = 0, y = 0, scale = 1, reading = false) {
+  if (ASSETS.character) return `<g transform="translate(${x} ${y}) scale(${scale})"><image href="${assetPath(ASSETS.character)}" width="120" height="120" preserveAspectRatio="xMidYMid meet"/></g>`;
+  return `<g transform="translate(${x} ${y}) scale(${scale})" stroke="#536c43" stroke-width="2.5" stroke-linejoin="round"><ellipse cx="52" cy="109" rx="47" ry="9" fill="#526548" opacity=".12" stroke="none"/><ellipse cx="52" cy="75" rx="37" ry="34" fill="#a8bd7d"/><ellipse cx="25" cy="99" rx="19" ry="9" fill="#a8bd7d"/><ellipse cx="80" cy="99" rx="19" ry="9" fill="#a8bd7d"/><path d="M20 54C3 25 21 11 37 23 48 16 62 16 73 23c20-14 37 5 20 32 0 39-75 39-73-1Z" fill="#b3c98d"/><ellipse cx="28" cy="38" rx="5" ry="7" fill="#414b36" stroke="none"/><ellipse cx="79" cy="38" rx="5" ry="7" fill="#414b36" stroke="none"/><circle cx="26" cy="36" r="1.7" fill="#fff" stroke="none"/><circle cx="77" cy="36" r="1.7" fill="#fff" stroke="none"/><ellipse cx="18" cy="53" rx="8" ry="4" fill="#ddaaa0" stroke="none" opacity=".7"/><ellipse cx="89" cy="53" rx="8" ry="4" fill="#ddaaa0" stroke="none" opacity=".7"/><path d="M47 53q6 7 12 0" fill="none"/><path d="m20 69 30 8 32-8-5 13-26 7-26-8Z" fill="#d49b63" stroke="#a3774d"/>${reading ? '<path d="m15 78 36 8 36-8-3 29-33 5-33-5Z" fill="#f8edc9" stroke="#937c55"/><path d="M51 86v26m-24-20 14 3m20 0 14-3" fill="none" stroke="#bfa676"/><ellipse cx="19" cy="87" rx="8" ry="10" fill="#b3c98d"/><ellipse cx="84" cy="87" rx="8" ry="10" fill="#b3c98d"/>' : '<path d="M27 80q-12 12-2 15m52-15q12 12 2 15" fill="none"/>'}</g>`;
+}
+function avatar() { return `<svg viewBox="0 0 120 120" aria-hidden="true">${frogMarkup(5, 5, 1)}</svg>`; }
+function itemArt(id) {
+  if (ASSETS.items[id]) return imageArt(ASSETS.items[id], '');
+  const illustrations = {
+    rice: '<path d="M26 70 50 24q6-10 12 0l27 46q8 14-7 16H33q-17 0-7-16Z" fill="#fff9e5"/><path d="M43 62h25v24H43Z" fill="#64785b"/><circle cx="57" cy="47" r="7" fill="#c77f6a"/><path d="m39 50 3-4m27 11 3 2m-34 7 2 3" stroke="#d9cfae"/>',
+    sandwich: '<path d="m24 76 29-51q3-5 7 0l31 51Z" fill="#e2bd7e"/><path d="m28 70 28-46 29 46Z" fill="#fff1cb"/><path d="M27 74h60v7H27Z" fill="#91a36d"/><path d="M30 81h55v5H30Z" fill="#c9805d"/><path d="m40 61 13-7m6 7 8-5" stroke="#dcb97c"/>',
+    cake: '<path d="M32 49h50l-5 38H37Z" fill="#e4bc7b"/><path d="M34 58h47M43 63l2 19m13-19v19m12-19-2 19" stroke="#ba915e"/><path d="M28 47c-1-9 8-14 16-11-1-12 15-16 21-6 9-5 21 4 17 13 13 1 13 16 1 16H32c-10-1-12-9-4-12Z" fill="#fff1d0"/><circle cx="57" cy="28" r="6" fill="#c77f6a"/>',
+    map: '<path d="m20 31 24-8 24 8 24-8v57l-24 8-24-8-24 8Z" fill="#f1e4b7"/><path d="M44 23v57m24-49v57" stroke="#b8a278"/><path d="m27 66 12-19 14 12 20-17 10 10" fill="none" stroke="#7e9668" stroke-dasharray="4 4"/><path d="m73 65 5-9 5 9Z" fill="#8d9f76"/>',
+    cup: '<path d="M76 42h12c17 1 13 28-2 27H76" fill="none" stroke="#7e9e8e" stroke-width="6"/><path d="M29 37h49v40c0 17-49 17-49 0Z" fill="#b0c9b7"/><ellipse cx="53" cy="37" rx="25" ry="6" fill="#e9eee1"/><path d="M42 22q-7-8 0-15m15 15q-7-8 0-15" fill="none" stroke="#b8b6a0"/><path d="m48 59 7-8 7 8-7 8Z" fill="#f4edcf"/>',
+  };
+  return `<svg viewBox="0 0 112 112" aria-hidden="true"><g stroke="#8c795a" stroke-width="1.6" stroke-linejoin="round">${illustrations[id] || illustrations.map}</g></svg>`;
+}
+const cloud = (x, y, scale = 1) => `<path transform="translate(${x} ${y}) scale(${scale})" d="M0 23C-8 6 10-2 23 7 30-12 58-5 59 13c19-5 29 14 12 18H7Z" fill="#fffcf0" opacity=".8"/>`;
+const clover = (x, y, s = 1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0q2 15-2 23" fill="none" stroke="#668259" stroke-width="3"/><path d="M0 0C-24 2-17-20-6-13c5-17 22-7 15 5C26-6 17 13 5 5-2 22-20 9 0 0Z" fill="#83a564" stroke="#668259" stroke-width="1.5"/></g>`;
+function landscape(theme = 'hill', withFrog = true) {
+  let scene;
+  if (theme === 'town') scene = `<rect width="480" height="290" fill="#eadfbe"/>${cloud(330, 35, 1)}<path d="M0 240 480 222v68H0Z" fill="#d6c3a3"/><g stroke="#a18c6c" stroke-width="2"><path d="M20 121h135v123H20Z" fill="#f0d6a4"/><path d="m8 121 30-56h102l29 56Z" fill="#bb8565"/><path d="M54 177h42v67H54Z" fill="#8f9b7b"/><path d="M112 145h22v34h-22Z" fill="#99b8ad"/><path d="M201 103h145v133H201Z" fill="#ece4bf"/><path d="m189 103 30-50h111l30 50Z" fill="#a9af87"/><path d="M222 131h38v35h-38Zm64 0h37v35h-37Z" fill="#9dbbae"/><path d="M228 236v-49h87v49" fill="#c59f77"/><path d="m214 187 11-21h96l12 21Z" fill="#c4906d"/><path d="M398 218V90m-12 26h24v30h-24Z" fill="#f4dc9e"/></g><path d="M0 263q200-17 480-14" stroke="#b6a58a" stroke-width="2" fill="none"/>`;
+  else if (theme === 'lake') scene = `<rect width="480" height="290" fill="#e2e8d7"/><circle cx="365" cy="62" r="30" fill="#edce90"/>${cloud(63, 35, 1.3)}<path d="M0 150q70-103 172-13 111-94 200-16 54-64 108-11v102H0Z" fill="#aebfa0"/><path d="M0 174q200-37 480-15v131H0Z" fill="#acc8bd"/><path d="M0 242q157-9 258 48H0Z" fill="#c5cf9e"/><g stroke="#e0e8ce" stroke-width="2"><path d="M269 185h82m-145 27h69m84 17h67m-190 30h55m48-6h25"/></g><g stroke="#84936c" stroke-width="3"><path d="M39 233v-74m12 80 5-65m-31 60-6-52"/><path d="M38 175v-24m18 37v-20m-38 22v-17" stroke="#b5a17b" stroke-width="6"/></g><path d="m112 253 100-17 40 16-107 23Z" fill="#b6a078" stroke="#8e815e" stroke-width="2"/>`;
+  else scene = `<rect width="480" height="290" fill="#e5ecda"/>${cloud(42, 37, 1.2)}${cloud(309, 28, .9)}<circle cx="376" cy="70" r="28" fill="#ecd79d"/><path d="M0 187 118 75l99 115L335 103l145 92v95H0Z" fill="#b6c7a7"/><path d="m74 115 44-40 33 39-32-11Z" fill="#e2e6cc"/><path d="M0 204q139-102 279 9 96-46 201-13v90H0Z" fill="#9fb98b"/><path d="M0 258q151-118 326 32H0Z" fill="#c1d0a0"/><path d="M280 290q-90-74-33-101c-11 46 85 47 103 101" fill="#e8dfba"/><g stroke="#789165" stroke-width="2"><path d="M393 181v65"/><path d="M356 197c-19-24 2-58 26-49 20-30 62-4 49 22 28 25-1 53-21 42-19 20-57 5-54-15Z" fill="#829e71"/></g><g fill="#f6edcc"><circle cx="60" cy="257" r="3"/><circle cx="80" cy="251" r="3"/><circle cx="332" cy="236" r="3"/></g>`;
+  return `<svg viewBox="0 0 480 290" aria-hidden="true">${scene}${withFrog ? frogMarkup(theme === 'town' ? 160 : 142, theme === 'lake' ? 198 : 187, .68) : ''}<g fill="none" stroke="#859578" stroke-width="1.5"><path d="m224 49 7 4 7-4m16 8 6 3 6-3"/></g></svg>`;
+}
+function routeArt() { return `<svg viewBox="0 0 320 125" aria-hidden="true"><path d="M39 92c40-89 85 51 133-8s61-53 107-30" fill="none" stroke="#b9baa0" stroke-width="2" stroke-dasharray="4 6"/><g stroke="#8c9c76" stroke-width="1.7" stroke-linejoin="round"><path d="m12 58 26-36 27 36Z" fill="#c6d1af"/><path d="m28 37 10-15 11 15-11-4Z" fill="#f3f0d7"/><path d="m139 103 18-24 18 24Z" fill="#c7d2b0"/><path d="M253 72V41h40v31Z" fill="#e8d7ab"/><path d="m245 41 28-24 28 24Z" fill="#bd9876"/><path d="M268 72V55h10v17" fill="#b4bea0"/><path d="M102 35c-15-17 6-29 11-13 8-16 28-3 12 11l-11 10Z" fill="#d4b29a" stroke="#c19b83"/></g><circle cx="39" cy="91" r="6" fill="#8d9f77"/><circle cx="278" cy="56" r="6" fill="#b89b71"/>${cloud(194, 12, .43)}</svg>`; }
+
+
+// Painted props and HTML hit areas use the same uncropped world coordinates.
+function sceneLayout(width, height) {
+  const portrait = width / height < .9;
+  const baseWidth = portrait ? 760 : 1440, baseHeight = portrait ? 1280 : 900;
+  const scale = Math.min(width / baseWidth, height / baseHeight);
+  const worldWidth = width / scale, worldHeight = height / scale;
+  const offsetX = (worldWidth - baseWidth) / 2, offsetY = (worldHeight - baseHeight) / 2;
+  const house = portrait ? { x: 35, y: 110, scale: 690 / 900 } : { x: 485, y: 110, scale: 1 };
+  const rect = (x, y, w, h) => [house.x + x * house.scale, house.y + y * house.scale, w * house.scale, h * house.scale];
+  const objects = {
+    bag: rect(78, 245, 103, 143), map: rect(609, 313, 190, 91),
+    album: rect(554, 103, 286, 177), frog: rect(310, 305, 150, 145),
+    shop: portrait ? [438, 904, 245, 228] : [92, 292, 245, 228],
+    garden: portrait ? [42, 857, 320, 197] : [40, 580, 325, 205],
+    mail: portrait ? [618, 665, 96, 160] : [389, 488, 96, 160],
+  };
+  return { portrait, worldWidth, worldHeight, offsetX, offsetY, house, objects };
+}
+const sceneCloud = (x, y, s = 1) => `<path transform="translate(${x} ${y}) scale(${s})" d="M0 24c-12-18 9-31 23-18 9-23 38-17 40 3 23-7 40 17 17 22H8Z" fill="#fff8df" opacity=".7"/>`;
+const gardenLeaf = (x, y, s) => ASSETS.clover ? `<image href="${assetPath(ASSETS.clover)}" x="${x-25*s}" y="${y-35*s}" width="${60*s}" height="${60*s}"/>` : `<g transform="translate(${x} ${y}) scale(${s})" stroke="#6b8750" stroke-width="2"><path d="M0 0q8 17 0 29" fill="none"/><path d="M0 0c-31 5-29-28-9-18C-13-43 19-41 16-18 40-25 43 8 15 5 18 30-16 28 0 0Z" fill="#91ad68"/><path d="m0 0 8-10m-8 10-11-7" fill="none" opacity=".55"/></g>`;
+function gardenArt() {
+  const stones = Array.from({ length: 17 }, (_, i) => { const a = i * Math.PI * 2 / 17; return `<ellipse cx="${Math.cos(a)*150}" cy="${Math.sin(a)*76}" rx="23" ry="14" fill="${i%3 ? '#c6c5aa' : '#dfd7b9'}" stroke="#9b9e83" stroke-width="2"/>`; }).join('');
+  return `<ellipse cy="13" rx="171" ry="85" fill="#73865a" opacity=".15"/><ellipse rx="151" ry="77" fill="#aa916a" stroke="#947e5b" stroke-width="3"/><path d="M-120 5q105-25 238-7m-207 28q80-11 172-1" stroke="#9b835e" stroke-width="2" fill="none"/>${stones}<g id="grown-clovers">${[[-102,-19,.8],[-52,-43,1],[14,-50,.85],[77,-28,.95],[-49,14,1.1],[20,3,1.1],[91,21,.85]].map(a=>gardenLeaf(...a)).join('')}</g><g id="growing-clovers" style="display:none">${[[-102,-5,.25],[-52,-25,.3],[14,-30,.25],[77,-10,.3],[-49,34,.32],[20,24,.35],[91,36,.25]].map(a=>gardenLeaf(...a)).join('')}</g><g transform="translate(-52 86) rotate(-5)"><path d="M45 0v47" stroke="#8d7d58" stroke-width="8"/><path d="M0 0h104v34H0Z" fill="#ede0b3" stroke="#a18b61" stroke-width="2"/><text x="52" y="23" text-anchor="middle" fill="#7d8258" font-size="17" font-family="serif">三叶草田</text></g>`;
+}
+function stallArt() {
+  return `<g stroke="#8d7959" stroke-width="2.5" stroke-linejoin="round"><path d="M22 101h201v109H22Z" fill="#b99c6b"/><path d="M29 132h186v64H29Z" fill="#d1b986"/><path d="M34 140h175m-175 19h175m-175 19h175" fill="none" stroke="#b6a078"/><path d="M18 22v187m209-187v187" stroke-width="8"/><path d="M6 26h233L220 3H29Z" fill="#c3b990"/><path d="M6 26h233v42q-13 21-27 0-13 21-27 0-13 21-27 0-13 21-27 0-13 21-27 0-13 21-27 0-13 21-27 0-16 20-30 0Z" fill="#eae3bd"/><path d="M35 27v41q13 21 27 0V27m27 0v41q13 21 27 0V27m27 0v41q13 21 27 0V27m27 0v41q13 21 27 0V27" fill="#9ba97f" stroke="#81956a"/><path d="M12 111h223v12H12Z" fill="#d6bf8f"/><path d="M53 96 68 75q5-6 10 0l15 21Z" fill="#fff0c7"/><path d="M66 86h15v13H66Z" fill="#718661"/><path d="M117 91h34v18h-34Z" fill="#d1ad75"/><path d="M113 91q5-20 20-18 15 1 21 18Z" fill="#e9cf8f"/><path d="M173 84h29v25h-29Zm29 4c18-5 17 18 0 13" fill="#b1c0a1"/><path d="M84 145h84v34H84Z" fill="#f4e6ba"/><text x="126" y="168" text-anchor="middle" fill="#7c7955" font-family="serif" font-size="18" stroke="none">林间小铺</text></g><g fill="#d7b789" stroke="#a28d65" stroke-width="2"><circle cx="62" cy="212" r="18"/><circle cx="185" cy="212" r="18"/></g>`;
+}
+function mailboxArt() {
+  return `<g stroke="#8d795a" stroke-width="2.5" stroke-linejoin="round"><path d="M43 69v88h15V69" fill="#b7a073"/><path d="M9 75V30C9-9 78-9 78 30v45Z" fill="#a8b28b"/><path d="M9 75V30C9-9 59-9 59 30v45Z" fill="#c7caa0"/><path d="M19 35h29" stroke="#79855e" stroke-width="4"/><path d="M73 39V2h24v16H73" fill="#c88d6c"/><path d="M3 77h81" stroke-width="6"/><path d="M25 91h49v23H25Z" fill="#efe2b8"/><path d="m30 96 18 10 20-10" fill="none" stroke-width="1.5"/></g><g id="mail-envelope" style="display:none" transform="translate(19 7) rotate(-7)"><rect width="35" height="25" rx="2" fill="#fff5cf" stroke="#a98a5f" stroke-width="2"/><path d="m0 0 17 14L35 0" fill="none" stroke="#a98a5f" stroke-width="2"/></g>`;
+}
+function houseArt() {
+  const boards = Array.from({length:7},(_,i)=>`<path d="M-8 ${426+i*33}h916m-${820-i%3*200} 0v33m360-33v33"/>`).join('');
+  return `<g stroke="#967d56" stroke-width="2.8" stroke-linejoin="round">
+  <path d="M-5 91h905v343H-5Z" fill="#f0e5c5"/><path d="M0 93h900v24H0Z" fill="#ddd0ab" stroke="none"/><path d="M70 111v300m457-298v305m332-304v308" fill="none" stroke="#d5c5a0" stroke-width="1.5"/>
+  <path d="M-12 421h924v234H-12Z" fill="#c9ab7b"/><g stroke="#a48a60" stroke-width="2" fill="none">${boards}</g><g stroke="#b69b6f" stroke-width="1.6" fill="none"><path d="M45 447q70-14 111-1t75-2m338 3q91 17 159 0m-607 71q80 14 135 0m376 32q90-13 139 0m-650 55q105 17 183 0m98 20q58-15 102 0"/><ellipse cx="205" cy="478" rx="28" ry="6"/><ellipse cx="704" cy="590" rx="38" ry="5"/></g><path d="m224 280 127 0 95 190-218-1Z" fill="#fff4ca" opacity=".24" stroke="none"/>
+  <path d="M185 161q0-14 15-14h144q15 0 15 14v152H185Z" fill="#b4986f"/><path d="M198 162h148v137H198Z" fill="#b4cfc3"/><path d="M199 240q58-58 146-22v80H199Z" fill="#b8c69b" stroke="none"/><path d="m223 298 3-54m-3 25-15-15m18 0 18-15m64 58 2-61m0 20 14-18" fill="none" stroke="#89a174" stroke-width="4"/><path d="M271 161v138m-74-70h150" fill="none" stroke="#b79d72" stroke-width="8"/><path d="M175 310h194v13H175Z" fill="#cfb788"/>
+  <path d="M116 168h48v11h-48Z" fill="#b8a071"/><path d="M124 146h30l-5 22h-20Z" fill="#b4aa82"/><path d="M137 147q-21-29-31-9 4 13 24 8-7-32 10-32 17 5 5 30 24-32 33-13-2 12-24 15 20 0 18 19-16 9-21-16" fill="#90a477" stroke="#798f63"/>
+  <path d="M96 220h70m-33 0v27" fill="none" stroke-width="5"/>
+  <g id="bag-at-home"><path d="M112 271v-11q0-19 21-19t21 19v11" fill="none" stroke="#7b805d" stroke-width="5"/><path d="M91 287q0-22 22-22h41q24 0 24 22v71q0 21-23 21h-42q-22 0-22-21Z" fill="#94a078" stroke="#6e8059"/><path d="M87 294q45 27 95 0l-5-24q-43-19-85 0Z" fill="#aaba8b" stroke="#7e8c63"/><path d="M109 326h51v40h-51Z" fill="#abb98a" stroke="#7e8c63"/><path d="M112 290v32m44-32v32" fill="none" stroke="#b9a171" stroke-width="7"/><path d="M107 318h11v10h-11Zm43 0h11v10h-11Z" fill="#d7c28b" stroke="#9b8b60" stroke-width="1.5"/></g>
+  <path d="M414 133v27m0 0c-20 0-23 18-23 28h46c0-10-3-28-23-28Z" fill="#c4bd95"/><path d="M394 188h41q-4 15-20 15t-21-15Z" fill="#f6dfa5" stroke="#b3a27a"/>
+  <path d="M560 110q0-8 10-8h257q10 0 10 10v163H560Z" fill="#ba9c6f"/><path d="M571 113h254v150H571Z" fill="#c9b185"/><path d="M586 132q98 21 218 0" fill="none" stroke="#8c7958" stroke-width="1.6"/><g id="board-empty"><path d="M590 151h69v57h-69Z" fill="#d8c9a4" stroke="#b59c73" stroke-dasharray="4 5"/><path d="m604 191 15-13 16 13 10-8" fill="none" stroke="#b59c73"/><text x="734" y="182" text-anchor="middle" font-family="serif" font-size="14" fill="#9c895f" stroke="none">等一封远方的信</text></g>
+  <g id="board-memories" style="display:none"><g transform="translate(590 143) rotate(-7)"><path d="M0 0h91v72H0Z" fill="#f9f0d3"/><path d="M6 6h79v48H6Z" fill="#c7d6ad" stroke="none"/><path d="m6 54 28-31 23 20 14-18 14 29Z" fill="#91a67a" stroke="none"/><circle cx="70" cy="17" r="8" fill="#e7d08c" stroke="none"/></g><g transform="translate(713 153) rotate(7)"><path d="M0 0h87v68H0Z" fill="#faf1d7"/><path d="M6 6h75v45H6Z" fill="#b8cec0" stroke="none"/><path d="M6 41q37-20 75 0v10H6Z" fill="#97b4a0" stroke="none"/></g></g><path d="M597 126v20m130-13v21" stroke="#eee2b7" stroke-width="6"/><path d="M654 236h91v25h-91Z" fill="#eddfb8"/><text x="700" y="254" text-anchor="middle" font-family="serif" font-size="15" fill="#857652" stroke="none">远方来信</text>
+  <path d="M552 379h283v23H552Z" fill="#d5bc8a"/><path d="M566 403v101h20l5-101m207 0 5 101h19V403" fill="#ae9065"/><path d="M562 404h260v18H562Z" fill="#b59a6f"/><g id="desk-items" transform="translate(0 17)"><path d="m613 340 80-29 96 24-72 37Z" fill="#eee4b9"/><path d="m613 340 38 12 42-41m-42 41 2 14m39-55 27 61" fill="none" stroke="#b8ac7d" stroke-width="1.8"/><path d="m640 337 22-9 17 5 23-10 20 13 24-2" fill="none" stroke="#92a476" stroke-dasharray="4 4" stroke-width="2"/><path d="M804 348h21v25h-21Zm21 4c15-3 16 16 0 15" fill="#adc0a3"/><path d="M811 339q-7-8 1-15" fill="none" stroke="#c4b895" stroke-width="1.6"/>
+  </g><ellipse cx="384" cy="437" rx="108" ry="29" fill="#a59068" opacity=".15" stroke="none"/><path d="M277 414q0-35 106-35t106 35v26q-9 29-106 29t-106-29Z" fill="#d9cb9d"/><ellipse cx="383" cy="413" rx="106" ry="32" fill="#eee1b7"/><path d="M292 434q95 36 181 0" fill="none" stroke="#c3b38b"/>
+  <g id="frog-at-home">${frogMarkup(323,310,1.16,true)}</g><g id="frog-away" style="display:none"><path d="m347 409 36 8 37-8-4 25-33 7-33-7Z" fill="#f1e4b9"/><path d="M383 417v24m-25-20 16 4m18 0 15-4" fill="none" stroke-width="1.5"/></g>
+  <g transform="translate(520 424)"><path d="M0 11C0-33 26-54 60-48q51 6 42 71l-9 45H-13Z" fill="#9fac99" stroke="#7b8c78"/><path d="M-17 43q-23-26-30-1l-3 37q50 35 147 0l-5-37q-8-24-23-1" fill="#b2bba6" stroke="#82917e"/><path d="M-38 68q64 15 123-1" fill="none" stroke="#8f9b87"/></g>
+  <ellipse cx="388" cy="559" rx="151" ry="59" fill="#d3ba7d" stroke="#a18a59"/>${[139,125,109,87].map(r=>`<ellipse cx="388" cy="557" rx="${r}" ry="${r*.35}" fill="none" stroke="#b39b64" stroke-width="1.3"/>`).join('')}
+  <path d="M844 409h38l-6 39h-27Z" fill="#be9b75"/><path d="M861 410v-76m0 37q-37-33-34-7 3 16 30 16m7-16q35-37 38-9-5 17-34 20m-4-30q-18-37 3-40 18 4 1 39" fill="#94a678" stroke="#778b61"/>
+  <path d="M9 64h29v382H9Zm854 0h28v387h-28Z" fill="#c4a375"/><path d="M2 437h44v23H2Zm852 0h48v23h-48Z" fill="#ac8d62"/><path d="M22 90v335m853-334v338" stroke="#b49668" fill="none"/>
+  <path d="M-22 5h941v77H-22Z" fill="#bb9664"/><path d="M-20 16h937v49H-20Z" fill="#ceac79"/><path d="M23 31q115-16 220-2t222-1 235 4 190-6m-837 26q83-10 147 0m328-4q128 15 244-1" fill="none" stroke="#b49262" stroke-width="2"/><ellipse cx="491" cy="39" rx="30" ry="8" fill="none" stroke="#b49262" stroke-width="2"/><path d="M-22 79h941v12H-22Z" fill="#a9885c"/>
+  </g>`;
+}
+
+function homeArt(layout) {
+  const {worldWidth:w,worldHeight:h,offsetX:dx,offsetY:dy,portrait,house} = layout;
+  const garden = portrait ? [202,950] : [202,690], shop = portrait ? [438,904] : [92,292], mail = portrait ? [618,665] : [389,488];
+  const horizon = (portrait ? 480 : 350) + dy;
+  const flowers = Array.from({length:39},(_,i)=>{ const x=(i*173+37)%w,y=horizon+110+(i*109)%(h-horizon-150); return `<g transform="translate(${x} ${y})" stroke="#91a36e" stroke-width="1.6"><path d="m0 0 2-12m-2 9-6-5m7 0 5-4" fill="none"/>${i%3===0?'<circle cx="2" cy="-14" r="4" fill="#f4e6b2" stroke="none"/>':''}</g>`; }).join('');
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" role="img" aria-label="小满的开放式小屋和庭院"><defs><linearGradient id="scene-sky" x2="0" y2="1"><stop stop-color="#bcd7cd"/><stop offset="1" stop-color="#f1edcc"/></linearGradient><linearGradient id="scene-grass" x2="0" y2="1"><stop stop-color="#bfce9d"/><stop offset="1" stop-color="#d0d5a1"/></linearGradient><pattern id="scene-grain" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r=".6" fill="#766643" opacity=".055"/><circle cx="6" cy="7" r=".4" fill="#fff4d7" opacity=".3"/></pattern></defs>
+  <g id="scene-backdrop"><rect width="${w}" height="${h}" fill="url(#scene-sky)"/><circle cx="${w*.27}" cy="${horizon*.36}" r="48" fill="#efdea3" opacity=".7"/>${sceneCloud(w*.07,102+dy,1.4)}${sceneCloud(w*.55,72+dy,1.2)}
+  <path d="M0 ${horizon}Q${w*.15} ${horizon-190} ${w*.34} ${horizon-14}Q${w*.52} ${horizon-180} ${w*.72} ${horizon-30}Q${w*.89} ${horizon-130} ${w} ${horizon-58}V${h}H0Z" fill="#a8bf99"/><path d="M0 ${horizon+60}Q${w*.2} ${horizon-10} ${w*.45} ${horizon+80}Q${w*.7} ${horizon-20} ${w} ${horizon+36}V${h}H0Z" fill="url(#scene-grass)"/>
+  <g opacity=".6" stroke="#8d9c74" stroke-width="3" fill="none"><path d="M0 ${horizon+90}h${w}m-${w} 33h${w}"/>${Array.from({length:Math.ceil(w/55)},(_,i)=>`<path d="M${i*55} ${horizon+62}v95"/>`).join('')}</g>
+  <g transform="translate(${dx} ${dy})"><path d="M-40 20q115 74 147 188t-2 276h48q-8-118-2-193T-8 20Z" fill="#b29d72" stroke="#918663" stroke-width="3"/><path d="M-95-10C-100-91 7-111 52-65 105-123 200-49 167 18c63 34 26 122-43 104-37 53-110 44-125-7-77 22-127-55-94-125Z" fill="#829e70" stroke="#718f60" stroke-width="3"/></g>
+  <path d="M${house.x+dx+105} ${house.y+dy+630*house.scale}C${w*.22} ${h*.83} ${w*.5} ${h*.86} ${w*.41} ${h}h-${portrait?110:180}C${w*.38} ${h*.85} ${w*.12} ${h*.8} ${house.x+dx} ${house.y+dy+610*house.scale}Z" fill="#e2d8b2" opacity=".9"/>
+  <g fill="#e1ddc0" stroke="#acae8e" stroke-width="2">${[0,1,2].map(i=>`<ellipse cx="${mail[0]+dx+(i%2?25:6)}" cy="${mail[1]+dy+161+i*32}" rx="32" ry="13"/>`).join('')}</g>
+  ${flowers}</g>${ASSETS.background ? `<image href="${assetPath(ASSETS.background)}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice"/>` : ''}<g id="scene-shop" transform="translate(${shop[0]+dx} ${shop[1]+dy})">${stallArt()}</g><g id="scene-house" transform="translate(${house.x+dx} ${house.y+dy}) scale(${house.scale})">${houseArt()}</g><g id="scene-mail" transform="translate(${mail[0]+dx} ${mail[1]+dy})">${mailboxArt()}</g><g id="scene-garden" transform="translate(${garden[0]+dx} ${garden[1]+dy})">${gardenArt()}</g>
+  <g transform="translate(${dx+(portrait?59:62)} ${dy+(portrait?1162:820)}) rotate(-3)" stroke="#a18b63" stroke-width="2"><path d="M0 0h212v65H0Z" fill="#e3d3a7"/><path d="M8 8h196v49H8Z" fill="none" opacity=".5"/><text x="106" y="29" text-anchor="middle" font-family="serif" font-size="24" letter-spacing="5" fill="#6e7852" stroke="none">旅行小满</text><text x="106" y="49" text-anchor="middle" font-family="serif" font-size="11" letter-spacing="3" fill="#92916c" stroke="none">风铃山脚的小屋</text></g>
+  <g fill="none" stroke="#82977c" stroke-width="2" stroke-linecap="round"><path d="m${w*.29} ${horizon*.48} 9 5 10-5m13 20 8 4 9-4"/></g><rect width="${w}" height="${h}" fill="url(#scene-grain)" pointer-events="none"/></svg>`;
+}
+
+
+const $ = selector => document.querySelector(selector);
+let storageAvailable = true;
+let state;
+try { state = restore(localStorage.getItem(SAVE_KEY)); } catch { state = createState(); storageAvailable = false; }
+let eventDefinitions = DEFAULT_EVENTS, eventLoadError = false;
+try { const raw = localStorage.getItem(EVENT_KEY); if (raw) eventDefinitions = parseEvents(raw); }
+catch { eventLoadError = true; }
+let modalView = null, albumFilter = 'all', shownCard = null, toastTimer, audio;
+let hintDismissed = state.trips > 0 || state.status !== 'home', lastAnnouncement = '';
+let showObjectLabels = false;
+const modal = $('#modal');
+
+document.querySelectorAll('[data-icon]').forEach(el => { el.innerHTML = icon(el.dataset.icon); });
+window.addEventListener('resize', renderScene);
+
+function save() {
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch { storageAvailable = false; }
+  document.querySelectorAll('[data-save-status]').forEach(el => { el.textContent = storageAvailable ? '进度自动保存在当前浏览器，不会同步到其他设备。' : '当前浏览器无法保存，本次进度仅在页面打开期间保留。'; });
+}
+function chime() {
+  if (!state.sound) return;
+  try {
+    audio ||= new (window.AudioContext || window.webkitAudioContext)();
+    if (audio.state === 'suspended') audio.resume();
+    const oscillator = audio.createOscillator(), gain = audio.createGain();
+    oscillator.connect(gain); gain.connect(audio.destination); oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(660, audio.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(880, audio.currentTime + .12);
+    gain.gain.setValueAtTime(.045, audio.currentTime); gain.gain.exponentialRampToValueAtTime(.001, audio.currentTime + .35);
+    oscillator.start(); oscillator.stop(audio.currentTime + .36);
+  } catch { /* Sound is optional on unsupported browsers. */ }
+}
+function toast(message) {
+  const target = modal.open ? $('#dialog-feedback') : $('#toast');
+  document.querySelectorAll('.toast,.dialog-feedback').forEach(el => el.classList.remove('visible'));
+  target.innerHTML = icon('leaf') + `<span>${message}</span>`;
+  target.classList.add('visible'); clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => target.classList.remove('visible'), 3400);
+}
+const remaining = () => Math.max(0, Math.ceil((state.arrivesAt - Date.now()) / 1000));
+const clock = seconds => `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
+function renderScene() {
+  const bounds = $('#home-scene').getBoundingClientRect();
+  const layout = sceneLayout(bounds.width, bounds.height);
+  $('#scene-art').innerHTML = homeArt(layout);
+  $('#home-scene').classList.toggle('portrait', layout.portrait);
+  for (const [id, [x,y,w,h]] of Object.entries(layout.objects)) {
+    const button = document.querySelector(`[data-object="${id}"]`);
+    button.style.left = `${(x + layout.offsetX) / layout.worldWidth * 100}%`;
+    button.style.top = `${(y + layout.offsetY) / layout.worldHeight * 100}%`;
+    button.style.width = `${w / layout.worldWidth * 100}%`;
+    button.style.height = `${h / layout.worldHeight * 100}%`;
+  }
+  const [x,y,w,h] = layout.objects.bag;
+  $('#first-hint').style.left = `${(x+w/2+layout.offsetX)/layout.worldWidth*100}%`;
+  $('#first-hint').style.top = `${(y+h+layout.offsetY)/layout.worldHeight*100}%`;
+  renderHome();
+}
+function renderHome() {
+  const home = state.status === 'home', preparing = state.status === 'preparing', returned = state.status === 'returned';
+  $('#coin-count').textContent = state.coins;
+  $('#frog-at-home').style.display = home || returned || preparing ? '' : 'none';
+  $('#frog-away').style.display = home || returned || preparing ? 'none' : '';
+  $('#bag-at-home').style.display = home || returned || preparing ? '' : 'none';
+  // The peg remains a usable travel shortcut when the bag is away.
+  $('#bag-hotspot').classList.toggle('away', !home && !returned && !preparing);
+  $('#bag-hotspot').setAttribute('aria-label', home ? '门边背包：收拾行囊' : returned ? '门边背包：查看来信' : preparing ? '门边背包：正在准备' : '门边挂钩：查看旅行');
+  $('#frog-hotspot').hidden = !home && !returned && !preparing;
+  $('#frog-label').textContent = returned ? '小满回来啦' : preparing ? '小满在整理行囊' : '小满正在读书';
+  $('#mail-envelope').style.display = returned ? '' : 'none';
+  $('.mail-dot').hidden = !returned;
+  $('#mail-hotspot').classList.toggle('has-letter', returned);
+  $('#mail-hotspot').setAttribute('aria-label', returned ? '信箱有新来信：拆开小满带回的明信片' : '查看小满的信箱');
+  $('#map-label').textContent = home ? '旅行地图' : returned ? '小满已经回家' : preparing ? '准备出发' : `归来还有 ${clock(remaining())}`;
+  const ready = Date.now() >= state.gardenReadyAt;
+  $('#grown-clovers').style.display = ready ? '' : 'none';
+  $('#growing-clovers').style.display = ready ? 'none' : '';
+  $('#garden-label').textContent = ready ? '三叶草金币熟啦 · ＋30' : `慢慢生长 · ${Math.ceil((state.gardenReadyAt-Date.now())/1000)} 秒`;
+  $('#garden-hotspot').classList.toggle('ripe', ready);
+  $('#garden-hotspot').setAttribute('aria-label', ready ? '收取三叶草金币，获得30三叶草金币' : '三叶草金币正在生长');
+  document.querySelectorAll('[data-action="skip"]').forEach(el => { el.disabled = !['preparing','traveling'].includes(state.status); });
+  const count = Object.keys(state.album).length;
+  $('#album-count').textContent = count;
+  $('#board-empty').style.display = count ? 'none' : '';
+  $('#board-memories').style.display = count ? '' : 'none';
+  $('#first-hint').hidden = hintDismissed || !home;
+  $('#bag-hotspot').classList.toggle('hinted', !hintDismissed && home);
+  $('#home-scene').classList.toggle('show-labels', showObjectLabels);
+  const announcement = home ? '小满在家读书。点点屋里的背包，准备一次旅行。' : preparing ? '小满正在准备，马上出发。' : returned ? '小满回家了，信箱里有一封新的来信。' : '小满正在旅行。可以点桌上的地图查看归来时间。';
+  if (announcement !== lastAnnouncement) { $('#scene-announcement').textContent = announcement; lastAnnouncement = announcement; }
+  $('#scene-art>svg').setAttribute('aria-label', announcement + '屋内有背包、旅行地图和明信片板，庭院里有三叶草田、信箱和林间小铺。');
+}
+
+function header(title, subtitle, eyebrow = 'A LITTLE JOURNEY', extra = '') {
+  return `<div class="modal-header"><div><p class="modal-eyebrow">${eyebrow}</p><h2 id="modal-title">${title}</h2><p>${subtitle}</p></div><div>${extra}<button class="icon-button" data-action="close" aria-label="关闭弹窗">${icon('close')}</button></div></div>`;
+}
+function open(view, id = null) {
+  modalView = view; shownCard = id;
+  $('#dialog-feedback').classList.remove('visible');
+  renderModal();
+  if (!modal.open) modal.showModal();
+  setTimeout(() => $('#modal-content [data-action="close"]')?.focus(), 0);
+}
+function close() { modal.close(); modalView = null; }
+modal.addEventListener('close', () => { modalView = null; });
+modal.addEventListener('click', event => { if (event.target === modal) { const rect = modal.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) close(); } });
+function choiceButton(item) {
+  const selected = state[item.type === 'food' ? 'food' : 'tool'] === item.id;
+  return `<button class="choice ${selected ? 'selected' : ''}" data-action="choose" data-id="${item.id}" aria-pressed="${selected}" ${state.inventory[item.id] ? '' : 'disabled'}><span class="quantity">${item.type === 'tool' ? state.inventory[item.id] ? '已拥有' : '未拥有' : `×${state.inventory[item.id]}`}</span>${selected ? `<span class="selection-check">${icon('check')}</span>` : ''}<span class="item-art">${itemArt(item.id)}</span><strong>${item.name}</strong><small>${item.type === 'food' ? item.effect : item.id === 'map' ? '偏向山野 · 永久使用' : '偏向小镇 · 永久使用'}</small></button>`;
+}
+function bagModal() {
+  if (state.status === 'returned') return receiptModal();
+  if (state.status !== 'home') return travelModal();
+  const food = itemById(state.food), tool = itemById(state.tool), canDepart = food && state.inventory[food.id] > 0;
+  return header('收拾小行囊', '一份喜欢的食物，一件心爱的小物。', 'PACK A LITTLE HAPPINESS') + `<div class="modal-body"><div class="gift-note">${icon('heart')}初见礼物：梅子饭团 ×2、折叠地图 ×1 已放进行囊。</div><h3 class="field-heading">路上的食物<span>必选 · 每次出发消耗 1 份</span></h3><div class="choice-grid">${ITEMS.filter(i => i.type === 'food').map(choiceButton).join('')}</div><h3 class="field-heading">心爱的小物<span>可选 · 不会消耗</span></h3><div class="choice-grid"><button class="choice empty-choice ${!state.tool ? 'selected' : ''}" data-action="choose" data-id="none" aria-pressed="${!state.tool}">${!state.tool ? `<span class="selection-check">${icon('check')}</span>` : ''}<span class="item-art">${icon('wind')}</span><strong>轻装出门</strong><small>跟着风，随心走走</small></button>${ITEMS.filter(i => i.type === 'tool').map(choiceButton).join('')}</div><div class="trip-summary"><span>${tool ? `${tool.name} · ${tool.id === 'map' ? '更容易遇见山野' : '更容易遇见小镇'}` : '目的地交给沿途的风'}</span><strong>${food ? `预计 ${food.duration / 1000} 秒后归来` : '先选一份食物吧'}</strong></div>${!canDepart ? '<p class="empty-album-message">食物用完啦。去林间小铺买一份，或收些三叶草金币再回来。</p>' : ''}</div><div class="modal-footer"><button class="primary-button" data-action="depart" ${canDepart ? '' : 'disabled'}>${icon('bag')}准备好了，让小满出发${icon('arrow')}</button><p>行李会带来邂逅的偏向，目的地仍然有惊喜。 <button class="text-link" style="display:inline-flex" data-action="shop">去小铺补给 →</button></p></div>`;
+}
+function shopModal() {
+  return header('林间小铺', '买一点日常，把心意装进行囊。', 'LITTLE THINGS, LONG JOURNEYS') + `<div class="modal-body"><div class="album-top"><span>给下一次出发，添点小期待</span><span class="shop-balance">${icon('clover')}${state.coins} 三叶草金币</span></div><div class="shop-list">${ITEMS.map((item, index) => `${index === 0 || index === 3 ? `<h3 class="shop-group-title">${index === 0 ? '路上的食物 · 每次消耗 1 份' : '心爱的小物 · 永久拥有'}</h3>` : ''}<div class="shop-item"><div class="shop-art">${itemArt(item.id)}</div><div class="shop-copy"><h3>${item.name}</h3><p>${item.description}</p><small>${item.effect}</small></div><div><button class="buy-button" data-action="buy" data-id="${item.id}" ${state.coins < item.price || (item.type === 'tool' && state.inventory[item.id]) ? 'disabled' : ''}>${item.type === 'tool' && state.inventory[item.id] ? `${icon('check')}已拥有` : `${icon('clover')}${item.price} · 购买`}</button><span class="shop-owned">${item.type === 'food' ? `背包里有 ${state.inventory[item.id]} 份` : '一件就够，陪伴很久'}</span></div></div>`).join('')}</div></div><div class="modal-footer"><button class="primary-button" data-action="bag">${icon('bag')}${state.status === 'home' ? '去收拾行囊' : '查看小满的旅行'}${icon('arrow')}</button><p>三叶草金币不够时，回到小院收一收，30 秒后又会成熟。</p></div>`;
+}
+const themes = [['all', '全部回忆'], ['hill', '山野'], ['town', '小镇'], ['lake', '湖畔']];
+function albumModal() {
+  const cards = CARDS.filter(card => albumFilter === 'all' || card.theme === albumFilter);
+  return header('小满的旅行手记', '把远方的风景，珍藏成小小的日常。', 'POSTCARDS FROM SOMEWHERE') + `<div class="modal-body"><div class="album-top"><span>已珍藏 <strong>${Object.keys(state.album).length}</strong> / 9 段回忆</span><span>已旅行 ${state.trips} 次</span></div><div class="filter-row">${themes.map(([id, name]) => `<button class="filter-button ${albumFilter === id ? 'selected' : ''}" data-action="filter" data-id="${id}" aria-pressed="${albumFilter === id}">${name}</button>`).join('')}</div>${!state.trips ? `<div class="empty-album-message">第一张明信片，还在远方等着你。<br>替小满准备行囊，出发后就会有故事。</div>` : ''}<div class="album-grid">${cards.map(card => `<button class="album-card ${state.album[card.id] ? '' : 'locked'}" data-action="card" data-id="${card.id}" aria-label="${state.album[card.id] ? `查看${card.title}` : `${card.place} · 尚未收集`}">${landscape(card.theme, !!state.album[card.id])}${!state.album[card.id] ? `<span class="lock-icon">${icon('lock')}</span>` : ''}<h3>${state.album[card.id] ? card.title : '尚未抵达的风景'}</h3><small>${card.place} ${state.album[card.id] ? `· ×${state.album[card.id]}` : ''}</small></button>`).join('')}</div></div><div class="modal-footer"><button class="primary-button" data-action="bag">${icon('bag')}${state.status === 'home' ? '准备下一段回忆' : '看看这一次旅行'}${icon('arrow')}</button><p>回忆不会过期，重复的来信也会好好珍藏。</p></div>`;
+}
+function receiptModal() {
+  const card = cardById(state.pendingCard);
+  if (!card) return bagModal();
+  return header('远方来信，请查收', '小满回来了，也带回了一点远方。', 'A LITTLE LETTER FOR YOU') + `<div class="modal-body"><span class="return-badge">${icon('mail')}${state.album[card.id] ? '又一次遇见 · 重复回忆也有温度' : '一段全新的回忆'}</span>${postcard(card)}${eventLog()}</div><div class="modal-footer"><button class="primary-button" data-action="claim">${icon('heart')}把这份回忆珍藏起来${icon('arrow')}</button><p>收进旅行手记后，就可以准备下一次出发。</p></div>`;
+}
+function postcard(card) { return `<div class="postcard-full">${landscape(card.theme)}<h3>${card.title}</h3><div class="postcard-place">${icon('compass')}${card.place} · 小满的旅行</div></div><p class="letter">“${card.note}”</p><p class="letter-sign">—— 想念你的小满</p>`; }
+function cardModal() {
+  const card = cardById(shownCard);
+  return header('一段远方的回忆', `${card.place} · 收到 ${state.album[card.id]} 次`, 'KEEP A LITTLE MEMORY') + `<div class="modal-body">${postcard(card)}</div><div class="modal-footer"><button class="primary-button" data-action="album">回到旅行手记</button></div>`;
+}
+function travelModal() {
+  return header('小满在路上', '你准备的小心意，正陪它走过远方。', 'SOMEWHERE, SOMETHING LOVELY') + `<div class="modal-body travel-state"><div class="travel-landscape">${landscape(state.tool === 'cup' ? 'town' : state.tool === 'map' ? 'hill' : 'lake')}</div><h3>${state.status === 'preparing' ? '出发前，深呼吸一下' : '好风景，值得慢慢走'}</h3><div class="travel-clock" data-travel-clock>${clock(remaining())}</div><span class="trip-time-label">预计归来倒计时 · 离开页面也会继续</span><p>小满会记住沿途的小事，<br>回来再慢慢讲给你听。</p>${eventLog()}<button class="secondary-button" data-action="skip">Demo · 快进到小满归来</button></div><div class="modal-footer"><button class="primary-button" data-action="close">先去小院坐坐</button></div>`;
+}
+function mapModal() {
+  if (state.status === 'returned') return receiptModal();
+  if (state.status !== 'home') return travelModal();
+  return header('小满的旅行地图', '下一站，就交给沿途的风吧。', 'FOLLOW THE LITTLE WIND') + `<div class="modal-body map-modal"><div class="route-art">${routeArt()}</div><p>山野、湖畔，或一座陌生的小镇。<br>带上一份食物，就可以准备出发。</p><div class="map-destinations">${[['hill','风铃山野'],['town','橘灯小镇'],['lake','月牙湖畔']].map(([theme,name]) => `<div>${landscape(theme,false)}<span>${name}</span></div>`).join('')}</div></div><div class="modal-footer"><button class="primary-button" data-action="bag">${icon('bag')}去准备行囊${icon('arrow')}</button><p>点击小屋墙上的背包，也可以收拾行囊。</p></div>`;
+}
+function eventLog() {
+  const current = state.tripEvent;
+  const visible = current && Date.now() >= current.occurredAt ? [current] : [];
+  const entries = [...visible, ...state.eventHistory.slice().reverse()].slice(0, 10);
+  return `<section class="event-log"><h3>沿途小事</h3>${entries.length ? entries.map(event => `<article><strong>${escapeText(event.title)}</strong><p>${escapeText(event.text)}</p><small>＋${event.coins} 三叶草金币 · ${event.rewarded ? '已领取' : '归来拆信时领取'}</small></article>`).join('') : '<p>还没有沿途消息，出发后再来看看。</p>'}</section>`;
+}
+function eventsModal() {
+  return header('事件工坊', '编辑事件 JSON，保存后从下一趟旅行生效。', 'YOUR LITTLE STORIES') + `<div class="modal-body"><p>每趟从符合目的地和道具条件的事件中，按权重抽取一条。空数组表示不发生事件。</p><label for="event-json">事件配置</label><textarea id="event-json" spellcheck="false">${escapeText(JSON.stringify(eventDefinitions, null, 2))}</textarea><p>theme：any / hill / town / lake；tool：null / map / cup；at：旅行进度 0.1–0.9；coins：0–100；weight：1–100。</p><div class="event-actions"><button class="primary-button" data-action="save-events">保存事件</button><button class="secondary-button" data-action="export-events">导出 JSON</button><label class="secondary-button">导入 JSON<input id="event-file" type="file" accept=".json,application/json"></label><button class="secondary-button" data-action="default-events">填入示例</button></div><p id="event-feedback" role="status">配置只保存在当前浏览器；导出 JSON 可备份。更改不影响已出发的旅行。</p></div>`;
+}
+function settingsModal() {
+  return header('小屋里的小设置', '让日子，按自己喜欢的样子慢慢过。', 'MAKE YOURSELF AT HOME') + `<div class="modal-body settings-body"><div class="setting-row"><div><strong>轻轻的交互音效</strong><p>收三叶草金币、出发时的一点好心情。</p></div><button class="secondary-button" data-action="sound" aria-pressed="${state.sound}">${icon(state.sound?'sound':'sound-off')}${state.sound?'已开启':'已关闭'}</button></div><div class="setting-row"><div><strong>看看屋里有什么</strong><p>显示背包、地图、小摊等物品的名称。</p></div><button class="secondary-button" data-action="labels">${showObjectLabels?'收起名称':'显示名称'}</button></div><p class="save-explanation" data-save-status>${storageAvailable?'进度自动保存在当前浏览器，不会同步到其他设备。':'当前浏览器无法保存，本次进度仅在页面打开期间保留。'}</p><button class="secondary-button" data-action="events">事件工坊 · 自己写故事</button><button class="secondary-button" data-action="journal">查看沿途小事</button><div class="experience-tools"><span class="modal-eyebrow">DEMO · 体验工具</span><p>旅行已缩短为 20–40 秒。出发后，点桌上的地图可以快进旅行。</p><button class="secondary-button" data-action="skip" ${['preparing','traveling'].includes(state.status)?'':'disabled'}>${icon('forward')}快进这次旅行</button><button class="text-link" data-action="reset">重新体验初见的那一天</button></div></div>`;
+}
+function renderModal() {
+  const focused = document.activeElement;
+  const action = focused?.dataset.action, id = focused?.dataset.id;
+  const renderers = { events: eventsModal, journal: () => header('沿途小事', '最近十条旅途消息；已领取历史最多保存一百条。') + `<div class="modal-body">${eventLog()}</div>`, map: mapModal, settings: settingsModal, bag: bagModal, shop: shopModal, album: albumModal, receipt: receiptModal, card: cardModal, reset: () => header('再认识一次小满', '从初见的那一天，重新开始。', 'START A LITTLE JOURNEY AGAIN') + '<div class="modal-body"><p class="reset-copy">这会清除当前浏览器里的 Demo 进度，包括三叶草金币、物品和旅行手记，恢复初见礼物。</p><div class="reset-actions"><button class="secondary-button" data-action="close">保留这些回忆</button><button class="primary-button" data-action="confirm-reset">确认重新体验</button></div></div>' };
+  $('#modal-content').innerHTML = renderers[modalView]();
+  if (modal.open && action) {
+    const match = [...$('#modal-content').querySelectorAll('button')].find(button => button.dataset.action === action && button.dataset.id === id && !button.disabled);
+    (match || $('#modal-content [data-action="close"]'))?.focus();
+  }
+}
+function change() { save(); renderHome(); }
+document.addEventListener('click', event => {
+  const button = event.target.closest('button[data-action]');
+  if (!button || button.disabled) return;
+  const { action, id } = button.dataset;
+  switch (action) {
+    case 'events': open('events'); break;
+    case 'journal': open('journal'); break;
+    case 'default-events': $('#event-json').value = JSON.stringify(DEFAULT_EVENTS, null, 2); $('#event-feedback').textContent = '示例已填入，点击保存事件后生效。'; break;
+    case 'save-events':
+      try {
+        const candidate = parseEvents($('#event-json').value);
+        localStorage.setItem(EVENT_KEY, JSON.stringify(candidate));
+        eventDefinitions = candidate;
+        $('#event-feedback').textContent = '已保存！下一次出发会使用这些事件。';
+      } catch (error) { $('#event-feedback').textContent = `未保存：${error.message}`; }
+      break;
+    case 'export-events':
+      try {
+        const candidate = parseEvents($('#event-json').value);
+        const url = URL.createObjectURL(new Blob([JSON.stringify(candidate, null, 2)], { type: 'application/json' }));
+        const link = document.createElement('a'); link.href = url; link.download = 'travel-events.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+      } catch (error) { $('#event-feedback').textContent = `不能导出：${error.message}`; }
+      break;
+    case 'home': if (modal.open) close(); window.scrollTo({ top: 0, behavior: 'smooth' }); break;
+    case 'close': close(); break;
+    case 'bag': hintDismissed = true; renderHome(); open('bag'); break;
+    case 'map': open('map'); break;
+    case 'settings': open('settings'); break;
+    case 'dismiss-hint': hintDismissed = true; renderHome(); break;
+    case 'labels': showObjectLabels = !showObjectLabels; change(); close(); toast(showObjectLabels ? '物品名称已显示。点点这些东西，就能打开对应功能。' : '已收起物品名称，回到安静的小屋。'); break;
+    case 'shop': open('shop'); break;
+    case 'album': open('album'); break;
+    case 'harvest':
+      if (harvest(state)) { change(); chime(); toast('收好啦！获得 30 三叶草金币，下一次出发又近了一点。'); }
+      else toast('三叶草金币正在慢慢长大，再等一小会儿。');
+      break;
+    case 'pet': toast(state.status === 'returned' ? '小满：我回来啦！信箱里有送给你的风景。' : ['小满翻了一页书，又偷偷打了个哈欠。', '小满：等风轻一点，就去远方走走。', '小满朝你挥挥手。今天也要好好吃饭呀。'][Math.floor(Math.random() * 3)]); chime(); break;
+    case 'mail': if (state.status === 'returned') open('receipt'); else toast('信箱还空着。等小满回来，就有远方的消息了。'); break;
+    case 'choose': if (choose(state, id)) { change(); renderModal(); } break;
+    case 'buy':
+      if (buy(state, id)) { change(); renderModal(); chime(); toast(`${itemById(id).name}，已经放进行囊啦。`); }
+      break;
+    case 'depart':
+      if (depart(state, Date.now(), Math.random, eventDefinitions)) { change(); close(); chime(); toast('行囊准备好啦。小满马上出发，替你去看看远方。'); }
+      break;
+    case 'skip':
+      if (fastForward(state)) { change(); chime(); if (modal.open) open('receipt'); else toast('小满回来啦！打开信箱，收下远方的来信。'); }
+      break;
+    case 'claim': {
+      const cardId = claim(state);
+      if (cardId) { change(); chime(); open('card', cardId); toast('已珍藏进旅行手记。每段回忆，都好好收着。'); }
+      break;
+    }
+    case 'card': if (state.album[id]) open('card', id); else toast('这段风景还未遇见，下一次出发也许就会收到。'); break;
+    case 'filter': albumFilter = id; renderModal(); break;
+    case 'sound': state.sound = !state.sound; change(); if (modalView === 'settings') renderModal(); chime(); toast(state.sound ? '交互音效已开启，听一点轻轻的好心情。' : '音效已关闭，安安静静也很好。'); break;
+    case 'reset': open('reset'); break;
+    case 'confirm-reset': state = createState(); hintDismissed = false; showObjectLabels = false; change(); close(); toast('又是初见的那天。小满已经准备好认识你啦。'); break;
+  }
+});
+document.addEventListener('change', async event => {
+  if (event.target.id !== 'event-file') return;
+  const file = event.target.files[0]; if (!file) return;
+  try {
+    if (file.size > 300000) throw new Error('文件太大。');
+    const definitions = parseEvents(await file.text());
+    if (modalView !== 'events') return;
+    $('#event-json').value = JSON.stringify(definitions, null, 2);
+    $('#event-feedback').textContent = '已导入编辑区，请检查后点击保存事件。';
+  } catch (error) { if (modalView === 'events') $('#event-feedback').textContent = `未导入：${error.message}`; }
+});
+setInterval(() => {
+  const before = state.status; tick(state); renderHome();
+  document.querySelectorAll('[data-travel-clock]').forEach(el => { el.textContent = clock(remaining()); });
+  if (before !== state.status) {
+    save();
+    if (state.status === 'returned') { if (modal.open && ['bag', 'map'].includes(modalView)) renderModal(); toast('小满回来啦，带回了一封远方的来信。'); }
+    else if (modal.open && ['bag', 'map'].includes(modalView)) renderModal();
+  }
+}, 500);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { tick(state); change(); if (modal.open && ['bag', 'map'].includes(modalView)) renderModal(); } });
+renderScene(); save();
+if (eventLoadError) toast('事件配置无法读取，临时使用内置示例；原配置未覆盖。');
+if (!storageAvailable) toast('浏览器暂不支持保存，仍可体验本次完整流程。');
+
+</script>
+</body>
+</html>
