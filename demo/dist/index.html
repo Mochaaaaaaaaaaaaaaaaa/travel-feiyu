@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f5ec">
+  <meta name="description" content="给小满装好行囊，等一封远方的来信。一个温柔的旅行养成小游戏。">
+  <title>旅行小满 · 日子慢慢，风景常新</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/leaf.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="旅行小满首页"><span class="brand-mark" data-icon="leaf"></span><span>旅行小满<small>A LITTLE JOURNEY</small></span></a>
+    <div class="sidebar-line"></div>
+    <p class="nav-label">我的小天地</p>
+    <nav aria-label="主要导航">
+      <button class="nav-item active" data-action="home" aria-current="page"><span data-icon="home"></span>小满的家<span class="nav-dot"></span></button>
+      <button class="nav-item" data-action="bag"><span data-icon="bag"></span>收拾行囊</button>
+      <button class="nav-item" data-action="shop"><span data-icon="shop"></span>林间小铺</button>
+      <button class="nav-item" data-action="album"><span data-icon="card"></span>旅行手记<span id="nav-album-count" class="nav-count">0</span></button>
+    </nav>
+    <div class="sidebar-note"><span data-icon="sprout"></span><p>日子慢慢，<br>风景常新。</p><span class="note-line"></span><small>每一次出发，都有小小的期待</small></div>
+    <div class="local-note"><span class="tiny-dot"></span><span id="save-status">进度保存在此浏览器</span></div>
+  </aside>
+
+  <main>
+    <header class="topbar"><div class="breadcrumb">我的小天地<span>/</span><strong>小满的家</strong></div><div class="top-actions"><span class="weather"><span data-icon="sun"></span>晴 · 适合出门走走</span><button id="sound-button" class="icon-button" data-action="sound" aria-label="开启交互音效" aria-pressed="false"><span data-icon="sound-off"></span></button></div></header>
+    <div class="page-content">
+      <section class="page-heading"><div><p class="eyebrow">HOME, SWEET HOME</p><h1>小满的慢日子<span class="heading-leaf" data-icon="leaf"></span></h1><p class="subtitle">不赶路，也有好风景。</p></div><div class="wallet" aria-label="钱草余额"><span class="wallet-icon" data-icon="clover"></span><div><small>我的钱草</small><strong id="coin-count">80</strong></div><button class="wallet-plus" data-action="shop" aria-label="打开林间小铺">＋</button></div></section>
+
+      <div class="main-grid">
+        <div class="home-column">
+          <section class="scene-card" aria-label="小满的家园">
+            <div class="scene-top"><span class="location-pill"><span class="tiny-dot"></span>风铃山脚 · 小满的家</span><span class="scene-day">平凡又可爱的一天</span></div>
+            <div id="scene-art" class="scene-art"></div>
+            <button id="frog-hotspot" class="scene-hotspot frog-hotspot" data-action="pet" aria-label="和小满打招呼"></button>
+            <button id="garden-hotspot" class="scene-hotspot garden-hotspot" data-action="harvest"><span class="hotspot-label"><span data-icon="clover"></span><span id="garden-label">钱草熟啦，收一收</span><span>＋30</span></span></button>
+            <button id="mail-hotspot" class="scene-hotspot mail-hotspot" data-action="mail" aria-label="查看小满的信箱"><span class="mail-dot" hidden></span></button>
+            <div class="scene-caption"><span data-icon="wind"></span><span id="scene-caption-text">微风经过小院，小满正在读一本旧书。</span></div>
+          </section>
+
+          <section class="status-card"><div class="status-avatar" id="status-avatar"></div><div class="status-copy"><div class="status-title"><h2 id="status-title">小满在家</h2><span class="status-tag" id="status-tag">自在时光</span></div><p id="status-description">读了三页书，又想了想远方。</p></div><button class="primary-button" id="main-action" data-action="bag"><span data-icon="bag"></span><span id="main-action-text">收拾行囊</span><span data-icon="arrow"></span></button></section>
+
+          <section class="gentle-tip"><span class="tip-icon" data-icon="heart"></span><div><strong id="tip-title">一份小心意，一段新旅程</strong><p id="tip-description">给小满带上喜欢的食物吧。它会替你，去看看远方。</p></div><span class="tip-flower" data-icon="flower"></span></section>
+        </div>
+
+        <aside class="journal-column">
+          <section class="journey-panel"><div class="section-heading"><h2><span data-icon="compass"></span>下一站，去哪里？</h2><span class="little-label">随心出发</span></div><div class="route-illustration" id="route-art"></div><p class="journey-intro">山野、湖畔，或一座陌生的小镇。<br>目的地，就交给沿途的风吧。</p><div class="journey-steps"><div><span class="step-number">1</span><span>带上一份食物</span><span data-icon="check"></span></div><div><span class="step-number">2</span><span>选一件心爱的小物</span><small>可选</small></div><div><span class="step-number">3</span><span>等一封远方的来信</span><span data-icon="heart"></span></div></div><button class="text-link" data-action="bag">替小满准备一下<span data-icon="arrow"></span></button></section>
+
+          <section class="memories-panel"><div class="section-heading"><h2><span data-icon="card"></span>远方的来信</h2><button class="text-link small" data-action="album">全部<span data-icon="arrow"></span></button></div><div id="memory-preview"></div><div class="memory-progress"><span>已珍藏 <strong id="album-count">0</strong> / 9 段回忆</span><span id="trip-count">还没有出发过</span></div><div class="progress-track"><span id="album-progress"></span></div></section>
+        </aside>
+      </div>
+      <footer class="page-footer"><span>一间小屋，一点牵挂，一整个远方。</span><span class="footer-leaf" data-icon="leaf"></span><span>小满的旅行 · 界面体验版</span></footer>
+      <section class="demo-toolbar" aria-label="Demo体验工具"><span class="demo-badge">DEMO</span><span>旅行已缩短至 20–40 秒</span><button data-action="skip" id="skip-button" disabled><span data-icon="forward"></span>快进旅行</button><button data-action="reset"><span data-icon="refresh"></span>重新体验</button></section>
+    </div>
+  </main>
+  <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
