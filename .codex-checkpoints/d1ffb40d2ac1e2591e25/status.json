@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "checked_at": "2026-11-12T06:40:32.319797+00:00",
+  "event": "Stop",
+  "session_id": "01a1ce7b-eec4-7b50-83c5-b8997a5195be",
+  "source": "live_cache",
+  "quota": {
+    "time": "2026-11-12T06:40:26.550353+00:00",
+    "windows": [
+      {
+        "slot": "primary",
+        "minutes": 300.0,
+        "reset": 1794483481,
+        "remaining": 96
+      },
+      {
+        "slot": "secondary",
+        "minutes": 10080.0,
+        "reset": 1794576398,
+        "remaining": 43
+      }
+    ],
+    "source": "live_cache",
+    "account_key": "daa05e974ef2fc5badc563e7"
+  },
+  "query_error": null,
+  "status": "checked"
+}
