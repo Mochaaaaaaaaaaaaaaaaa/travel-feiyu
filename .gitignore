@@ -1,0 +1,15 @@
+# 依赖与构建缓存
+node_modules/
+
+# 本地预览截图，仅用于视觉复核
+demo/.preview/
+
+# 个人素材/下载目录，不进仓库
+originalworks/
+*.zip
+*.downloading
+
+# 系统与编辑器杂项
+.DS_Store
+Thumbs.db
+*.log
