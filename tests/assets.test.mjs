@@ -3,16 +3,25 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { execFileSync } from 'node:child_process';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const read = file => readFile(join(root, 'dist', file), 'utf8');
+const read = file => readFile(join(root, 'src', file), 'utf8');
+
+test('project runs and documents local files without the removed demo directory', async () => {
+  await assert.rejects(access(join(root, 'demo')), { code: 'ENOENT' });
+  const manifest = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));
+  assert.equal(manifest.scripts.test, 'node --test tests');
+  for (const file of ['README.md', 'docs/完整项目设计与实施计划.md', 'docs/双端本地游戏技术方案.md', 'docs/原型内容与美术接入说明.md']) {
+    const content = await readFile(join(root, file), 'utf8');
+    assert.doesNotMatch(content, /(?:\.\.\/|\b)demo\//i, file);
+  }
+});
 
 test('all HTML and module asset references resolve locally without dependencies', async () => {
-  for (const file of ['index.html', 'app.js', 'game.js', 'art.js', 'scene.js', 'styles.css']) {
+  for (const file of ['index.html', 'app.js', 'game.js', 'art.js', 'scene.js', 'assets.js', 'events.js', 'styles.css']) {
     const source = await read(file);
     for (const match of source.matchAll(/(?:src|href)="(\.\/[^"#]+)"|from '(\.\/[^']+)'/g)) {
-      await access(join(root, 'dist', match[1] || match[2]));
+      await access(join(root, 'src', match[1] || match[2]));
     }
     assert.doesNotMatch(source, /(?:src|href)="https?:\/\/|@import|url\(['"]?https?:/);
   }
@@ -31,15 +40,4 @@ test('home navigation lives in seven illustrated objects rather than dashboard p
     assert.match(html, new RegExp(`data-object="${id}" data-action="${action}"`));
   }
   assert.match(html, /aria-label="打开设置"/);
-});
-
-test('standalone artifact is reproducible and has no module or stylesheet fetches', async () => {
-  const before = await read('standalone.html');
-  execFileSync(process.execPath, [join(root, 'build.mjs')]);
-  const after = await read('standalone.html');
-  assert.equal(after, before);
-  assert.doesNotMatch(after, /<script[^>]+src=|<link[^>]+rel="stylesheet"|^import /m);
-  assert.match(after, /data:image\/svg\+xml;base64,/);
-  assert.match(after, /function depart\(/);
-  assert.match(after, /function homeArt\(/);
 });

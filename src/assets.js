@@ -1,4 +1,4 @@
-// Use local relative files, e.g. ./assets/character.webp. Keep null for Demo art.
+// Use local relative files, e.g. ./assets/character.webp. Keep null for built-in art.
 export const ASSETS = {
   background: null, // Landscape backdrop; house and interactive props remain separate.
   character: null,
