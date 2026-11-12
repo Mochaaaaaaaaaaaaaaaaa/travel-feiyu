@@ -9,7 +9,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFile(join(root, 'dist', file), 'utf8');
 
 test('all HTML and module asset references resolve locally without dependencies', async () => {
-  for (const file of ['index.html', 'app.js', 'game.js', 'art.js', 'styles.css']) {
+  for (const file of ['index.html', 'app.js', 'game.js', 'art.js', 'scene.js', 'styles.css']) {
     const source = await read(file);
     for (const match of source.matchAll(/(?:src|href)="(\.\/[^"#]+)"|from '(\.\/[^']+)'/g)) {
       await access(join(root, 'dist', match[1] || match[2]));
@@ -19,9 +19,18 @@ test('all HTML and module asset references resolve locally without dependencies'
 });
 
 test('UI update hooks refer to existing HTML or illustrated scene elements', async () => {
-  const [app, html, art] = await Promise.all(['app.js', 'index.html', 'art.js'].map(read));
-  const ids = new Set([...`${html}\n${art}`.matchAll(/\bid="([\w-]+)"/g)].map(match => match[1]));
+  const [app, html, art, scene] = await Promise.all(['app.js', 'index.html', 'art.js', 'scene.js'].map(read));
+  const ids = new Set([...`${html}\n${art}\n${scene}\n${app}`.matchAll(/\bid="([\w-]+)"/g)].map(match => match[1]));
   for (const [, id] of app.matchAll(/\$\('#([\w-]+)'\)/g)) assert.ok(ids.has(id), `Missing UI element #${id}`);
+});
+
+test('home navigation lives in seven illustrated objects rather than dashboard panels', async () => {
+  const html = await read('index.html');
+  assert.doesNotMatch(html, /class="(?:sidebar|topbar|page-heading|status-card|journey-panel|memories-panel|demo-toolbar)"|<nav/);
+  for (const [id, action] of Object.entries({bag:'bag',map:'map',album:'album',shop:'shop',garden:'harvest',mail:'mail',frog:'pet'})) {
+    assert.match(html, new RegExp(`data-object="${id}" data-action="${action}"`));
+  }
+  assert.match(html, /aria-label="打开设置"/);
 });
 
 test('standalone artifact is reproducible and has no module or stylesheet fetches', async () => {

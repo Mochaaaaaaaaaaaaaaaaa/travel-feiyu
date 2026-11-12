@@ -1,21 +1,22 @@
 import { SAVE_KEY, ITEMS, CARDS, createState, restore, tick, harvest, buy, choose, depart, fastForward, claim, itemById, cardById } from './game.js';
-import { icon, avatar, itemArt, homeArt, landscape, routeArt } from './art.js';
+import { icon, itemArt, landscape, routeArt } from './art.js';
+import { homeArt, sceneLayout } from './scene.js';
 
 const $ = selector => document.querySelector(selector);
 let storageAvailable = true;
 let state;
 try { state = restore(localStorage.getItem(SAVE_KEY)); } catch { state = createState(); storageAvailable = false; }
-let modalView = null, albumFilter = 'all', shownCard = null, toastTimer, memorySignature = '', audio;
+let modalView = null, albumFilter = 'all', shownCard = null, toastTimer, audio;
+let hintDismissed = state.trips > 0 || state.status !== 'home', lastAnnouncement = '';
+let showObjectLabels = false;
 const modal = $('#modal');
 
 document.querySelectorAll('[data-icon]').forEach(el => { el.innerHTML = icon(el.dataset.icon); });
-$('#scene-art').innerHTML = homeArt();
-$('#status-avatar').innerHTML = avatar();
-$('#route-art').innerHTML = routeArt();
+window.addEventListener('resize', renderScene);
 
 function save() {
   try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch { storageAvailable = false; }
-  $('#save-status').textContent = storageAvailable ? '进度保存在此浏览器' : '本次进度仅在打开期间保留';
+  document.querySelectorAll('[data-save-status]').forEach(el => { el.textContent = storageAvailable ? '进度自动保存在当前浏览器，不会同步到其他设备。' : '当前浏览器无法保存，本次进度仅在页面打开期间保留。'; });
 }
 function chime() {
   if (!state.sound) return;
@@ -31,56 +32,73 @@ function chime() {
   } catch { /* Sound is optional on unsupported browsers. */ }
 }
 function toast(message) {
-  $('#toast').innerHTML = icon('leaf') + `<span>${message}</span>`;
-  $('#toast').classList.add('visible'); clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => $('#toast').classList.remove('visible'), 3400);
+  const target = modal.open ? $('#dialog-feedback') : $('#toast');
+  document.querySelectorAll('.toast,.dialog-feedback').forEach(el => el.classList.remove('visible'));
+  target.innerHTML = icon('leaf') + `<span>${message}</span>`;
+  target.classList.add('visible'); clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => target.classList.remove('visible'), 3400);
 }
 const remaining = () => Math.max(0, Math.ceil((state.arrivesAt - Date.now()) / 1000));
 const clock = seconds => `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
+function renderScene() {
+  const bounds = $('#home-scene').getBoundingClientRect();
+  const layout = sceneLayout(bounds.width, bounds.height);
+  $('#scene-art').innerHTML = homeArt(layout);
+  $('#home-scene').classList.toggle('portrait', layout.portrait);
+  for (const [id, [x,y,w,h]] of Object.entries(layout.objects)) {
+    const button = document.querySelector(`[data-object="${id}"]`);
+    button.style.left = `${(x + layout.offsetX) / layout.worldWidth * 100}%`;
+    button.style.top = `${(y + layout.offsetY) / layout.worldHeight * 100}%`;
+    button.style.width = `${w / layout.worldWidth * 100}%`;
+    button.style.height = `${h / layout.worldHeight * 100}%`;
+  }
+  const [x,y,w,h] = layout.objects.bag;
+  $('#first-hint').style.left = `${(x+w/2+layout.offsetX)/layout.worldWidth*100}%`;
+  $('#first-hint').style.top = `${(y+h+layout.offsetY)/layout.worldHeight*100}%`;
+  renderHome();
+}
 function renderHome() {
   const home = state.status === 'home', preparing = state.status === 'preparing', returned = state.status === 'returned';
   $('#coin-count').textContent = state.coins;
-  $('#sound-button').innerHTML = icon(state.sound ? 'sound' : 'sound-off');
-  $('#sound-button').setAttribute('aria-pressed', String(state.sound));
-  $('#sound-button').setAttribute('aria-label', state.sound ? '关闭交互音效' : '开启交互音效');
-  $('#status-title').textContent = home ? '小满在家' : preparing ? '小满正在准备' : returned ? '小满回来啦' : '小满在旅行';
-  $('#status-tag').textContent = home ? '自在时光' : preparing ? '马上出发' : returned ? '带回一封信' : `还有 ${clock(remaining())}`;
-  $('#status-description').textContent = home ? '读了三页书，又想了想远方。' : preparing ? '系好围巾，检查一下小背包。' : returned ? '口袋里有风景，还有想对你说的话。' : '不必一直等，远方的风会把它送回家。';
-  $('#main-action-text').textContent = home ? '收拾行囊' : returned ? '拆开来信' : '看看旅途';
-  $('#scene-caption-text').textContent = home ? '微风经过小院，小满正在读一本旧书。' : preparing ? '小满合上了书，准备去看看远方。' : returned ? '听，信箱响了。小满带着故事回家啦。' : '小屋安安静静，远方正有好风景。';
   $('#frog-at-home').style.display = home || returned || preparing ? '' : 'none';
-  $('#frog-away').style.display = !home && !returned && !preparing ? '' : 'none';
-  $('#scene-art>svg').setAttribute('aria-label', home || preparing ? '绿树环绕着红瓦小屋，小满在门前读书，左边是钱草田，右边是信箱。' : returned ? '小满回到了小屋门前，信箱里有一封新来信，左边的钱草在生长。' : '小满已经外出旅行，门前留着一本书，小院和信箱正在等它回家。');
+  $('#frog-away').style.display = home || returned || preparing ? 'none' : '';
+  $('#bag-at-home').style.display = home || returned || preparing ? '' : 'none';
+  // The peg remains a usable travel shortcut when the bag is away.
+  $('#bag-hotspot').classList.toggle('away', !home && !returned && !preparing);
+  $('#bag-hotspot').setAttribute('aria-label', home ? '门边背包：收拾行囊' : returned ? '门边背包：查看来信' : preparing ? '门边背包：正在准备' : '门边挂钩：查看旅行');
   $('#frog-hotspot').hidden = !home && !returned && !preparing;
+  $('#frog-label').textContent = returned ? '小满回来啦' : preparing ? '小满在整理行囊' : '小满正在读书';
   $('#mail-envelope').style.display = returned ? '' : 'none';
   $('.mail-dot').hidden = !returned;
-  $('#mail-hotspot').setAttribute('aria-label', returned ? '拆开小满带回的来信' : '查看小满的信箱');
+  $('#mail-hotspot').classList.toggle('has-letter', returned);
+  $('#mail-hotspot').setAttribute('aria-label', returned ? '信箱有新来信：拆开小满带回的明信片' : '查看小满的信箱');
+  $('#map-label').textContent = home ? '旅行地图' : returned ? '小满已经回家' : preparing ? '准备出发' : `归来还有 ${clock(remaining())}`;
   const ready = Date.now() >= state.gardenReadyAt;
   $('#grown-clovers').style.display = ready ? '' : 'none';
   $('#growing-clovers').style.display = ready ? 'none' : '';
-  $('#garden-label').textContent = ready ? '钱草熟啦，收一收' : `生长中 · ${Math.ceil((state.gardenReadyAt - Date.now()) / 1000)} 秒`;
+  $('#garden-label').textContent = ready ? '钱草熟啦 · ＋30' : `慢慢生长 · ${Math.ceil((state.gardenReadyAt-Date.now())/1000)} 秒`;
+  $('#garden-hotspot').classList.toggle('ripe', ready);
   $('#garden-hotspot').setAttribute('aria-label', ready ? '收取钱草，获得30钱草' : '钱草正在生长');
-  $('.hotspot-label>span:last-child').textContent = ready ? '＋30' : '';
-  $('#skip-button').disabled = !['preparing', 'traveling'].includes(state.status);
+  document.querySelectorAll('[data-action="skip"]').forEach(el => { el.disabled = !['preparing','traveling'].includes(state.status); });
   const count = Object.keys(state.album).length;
-  $('#album-count').textContent = count; $('#nav-album-count').textContent = count;
-  $('#trip-count').textContent = state.trips ? `已旅行 ${state.trips} 次` : '还没有出发过';
-  $('#album-progress').style.width = `${count / CARDS.length * 100}%`;
-  $('#tip-title').textContent = returned ? '远方的风景，已经到家了' : home ? '一份小心意，一段新旅程' : '它在看风景，你也照顾好自己';
-  $('#tip-description').textContent = returned ? '打开信箱，看看小满这次遇见了什么。' : home ? '给小满带上喜欢的食物吧。它会替你，去看看远方。' : '可以去小铺逛逛，收收钱草，或晚一点再回来。';
-  const signature = JSON.stringify(state.album);
-  if (signature !== memorySignature) {
-    memorySignature = signature;
-    const id = Object.keys(state.album).at(-1), card = cardById(id);
-    $('#memory-preview').innerHTML = card ? `<button class="memory-card" data-action="card" data-id="${card.id}" aria-label="查看明信片：${card.title}">${landscape(card.theme)}<p class="memory-caption">${card.caption}</p></button>` : `<button class="memory-card empty" data-action="bag" aria-label="准备旅行，收集第一张明信片">${landscape('hill', false)}<span class="memory-empty-tag">${icon('mail')}等第一封来信</span><p class="memory-caption">第一段回忆，<br>还在路上。</p></button>`;
-  }
+  $('#album-count').textContent = count;
+  $('#board-empty').style.display = count ? 'none' : '';
+  $('#board-memories').style.display = count ? '' : 'none';
+  $('#first-hint').hidden = hintDismissed || !home;
+  $('#bag-hotspot').classList.toggle('hinted', !hintDismissed && home);
+  $('#home-scene').classList.toggle('show-labels', showObjectLabels);
+  const announcement = home ? '小满在家读书。点点屋里的背包，准备一次旅行。' : preparing ? '小满正在准备，马上出发。' : returned ? '小满回家了，信箱里有一封新的来信。' : '小满正在旅行。可以点桌上的地图查看归来时间。';
+  if (announcement !== lastAnnouncement) { $('#scene-announcement').textContent = announcement; lastAnnouncement = announcement; }
+  $('#scene-art>svg').setAttribute('aria-label', announcement + '屋内有背包、旅行地图和明信片板，庭院里有钱草田、信箱和林间小铺。');
 }
 
 function header(title, subtitle, eyebrow = 'A LITTLE JOURNEY', extra = '') {
   return `<div class="modal-header"><div><p class="modal-eyebrow">${eyebrow}</p><h2 id="modal-title">${title}</h2><p>${subtitle}</p></div><div>${extra}<button class="icon-button" data-action="close" aria-label="关闭弹窗">${icon('close')}</button></div></div>`;
 }
 function open(view, id = null) {
-  modalView = view; shownCard = id; renderModal();
+  modalView = view; shownCard = id;
+  $('#dialog-feedback').classList.remove('visible');
+  renderModal();
   if (!modal.open) modal.showModal();
   setTimeout(() => $('#modal-content [data-action="close"]')?.focus(), 0);
 }
@@ -118,10 +136,18 @@ function cardModal() {
 function travelModal() {
   return header('小满在路上', '你准备的小心意，正陪它走过远方。', 'SOMEWHERE, SOMETHING LOVELY') + `<div class="modal-body travel-state"><div class="travel-landscape">${landscape(state.tool === 'cup' ? 'town' : state.tool === 'map' ? 'hill' : 'lake')}</div><h3>${state.status === 'preparing' ? '出发前，深呼吸一下' : '好风景，值得慢慢走'}</h3><div class="travel-clock" data-travel-clock>${clock(remaining())}</div><span class="trip-time-label">预计归来倒计时 · 离开页面也会继续</span><p>小满会记住沿途的小事，<br>回来再慢慢讲给你听。</p><button class="secondary-button" data-action="skip">Demo · 快进到小满归来</button></div><div class="modal-footer"><button class="primary-button" data-action="close">先去小院坐坐</button></div>`;
 }
+function mapModal() {
+  if (state.status === 'returned') return receiptModal();
+  if (state.status !== 'home') return travelModal();
+  return header('小满的旅行地图', '下一站，就交给沿途的风吧。', 'FOLLOW THE LITTLE WIND') + `<div class="modal-body map-modal"><div class="route-art">${routeArt()}</div><p>山野、湖畔，或一座陌生的小镇。<br>带上一份食物，就可以准备出发。</p><div class="map-destinations">${[['hill','风铃山野'],['town','橘灯小镇'],['lake','月牙湖畔']].map(([theme,name]) => `<div>${landscape(theme,false)}<span>${name}</span></div>`).join('')}</div></div><div class="modal-footer"><button class="primary-button" data-action="bag">${icon('bag')}去准备行囊${icon('arrow')}</button><p>点击小屋墙上的背包，也可以收拾行囊。</p></div>`;
+}
+function settingsModal() {
+  return header('小屋里的小设置', '让日子，按自己喜欢的样子慢慢过。', 'MAKE YOURSELF AT HOME') + `<div class="modal-body settings-body"><div class="setting-row"><div><strong>轻轻的交互音效</strong><p>收钱草、出发时的一点好心情。</p></div><button class="secondary-button" data-action="sound" aria-pressed="${state.sound}">${icon(state.sound?'sound':'sound-off')}${state.sound?'已开启':'已关闭'}</button></div><div class="setting-row"><div><strong>看看屋里有什么</strong><p>显示背包、地图、小摊等物品的名称。</p></div><button class="secondary-button" data-action="labels">${showObjectLabels?'收起名称':'显示名称'}</button></div><p class="save-explanation" data-save-status>${storageAvailable?'进度自动保存在当前浏览器，不会同步到其他设备。':'当前浏览器无法保存，本次进度仅在页面打开期间保留。'}</p><div class="experience-tools"><span class="modal-eyebrow">DEMO · 体验工具</span><p>旅行已缩短为 20–40 秒。出发后，点桌上的地图可以快进旅行。</p><button class="secondary-button" data-action="skip" ${['preparing','traveling'].includes(state.status)?'':'disabled'}>${icon('forward')}快进这次旅行</button><button class="text-link" data-action="reset">重新体验初见的那一天</button></div></div>`;
+}
 function renderModal() {
   const focused = document.activeElement;
   const action = focused?.dataset.action, id = focused?.dataset.id;
-  const renderers = { bag: bagModal, shop: shopModal, album: albumModal, receipt: receiptModal, card: cardModal, reset: () => header('再认识一次小满', '从初见的那一天，重新开始。', 'START A LITTLE JOURNEY AGAIN') + '<div class="modal-body"><p class="reset-copy">这会清除当前浏览器里的 Demo 进度，包括钱草、物品和旅行手记，恢复初见礼物。</p><div class="reset-actions"><button class="secondary-button" data-action="close">保留这些回忆</button><button class="primary-button" data-action="confirm-reset">确认重新体验</button></div></div>' };
+  const renderers = { map: mapModal, settings: settingsModal, bag: bagModal, shop: shopModal, album: albumModal, receipt: receiptModal, card: cardModal, reset: () => header('再认识一次小满', '从初见的那一天，重新开始。', 'START A LITTLE JOURNEY AGAIN') + '<div class="modal-body"><p class="reset-copy">这会清除当前浏览器里的 Demo 进度，包括钱草、物品和旅行手记，恢复初见礼物。</p><div class="reset-actions"><button class="secondary-button" data-action="close">保留这些回忆</button><button class="primary-button" data-action="confirm-reset">确认重新体验</button></div></div>' };
   $('#modal-content').innerHTML = renderers[modalView]();
   if (modal.open && action) {
     const match = [...$('#modal-content').querySelectorAll('button')].find(button => button.dataset.action === action && button.dataset.id === id && !button.disabled);
@@ -136,7 +162,11 @@ document.addEventListener('click', event => {
   switch (action) {
     case 'home': if (modal.open) close(); window.scrollTo({ top: 0, behavior: 'smooth' }); break;
     case 'close': close(); break;
-    case 'bag': open('bag'); break;
+    case 'bag': hintDismissed = true; renderHome(); open('bag'); break;
+    case 'map': open('map'); break;
+    case 'settings': open('settings'); break;
+    case 'dismiss-hint': hintDismissed = true; renderHome(); break;
+    case 'labels': showObjectLabels = !showObjectLabels; change(); close(); toast(showObjectLabels ? '物品名称已显示。点点这些东西，就能打开对应功能。' : '已收起物品名称，回到安静的小屋。'); break;
     case 'shop': open('shop'); break;
     case 'album': open('album'); break;
     case 'harvest':
@@ -162,9 +192,9 @@ document.addEventListener('click', event => {
     }
     case 'card': if (state.album[id]) open('card', id); else toast('这段风景还未遇见，下一次出发也许就会收到。'); break;
     case 'filter': albumFilter = id; renderModal(); break;
-    case 'sound': state.sound = !state.sound; change(); chime(); toast(state.sound ? '交互音效已开启，听一点轻轻的好心情。' : '音效已关闭，安安静静也很好。'); break;
+    case 'sound': state.sound = !state.sound; change(); if (modalView === 'settings') renderModal(); chime(); toast(state.sound ? '交互音效已开启，听一点轻轻的好心情。' : '音效已关闭，安安静静也很好。'); break;
     case 'reset': open('reset'); break;
-    case 'confirm-reset': state = createState(); memorySignature = ''; change(); close(); toast('又是初见的那天。小满已经准备好认识你啦。'); break;
+    case 'confirm-reset': state = createState(); hintDismissed = false; showObjectLabels = false; change(); close(); toast('又是初见的那天。小满已经准备好认识你啦。'); break;
   }
 });
 setInterval(() => {
@@ -172,10 +202,10 @@ setInterval(() => {
   document.querySelectorAll('[data-travel-clock]').forEach(el => { el.textContent = clock(remaining()); });
   if (before !== state.status) {
     save();
-    if (state.status === 'returned') { if (modal.open && modalView === 'bag') renderModal(); toast('小满回来啦，带回了一封远方的来信。'); }
-    else if (modal.open && modalView === 'bag') renderModal();
+    if (state.status === 'returned') { if (modal.open && ['bag', 'map'].includes(modalView)) renderModal(); toast('小满回来啦，带回了一封远方的来信。'); }
+    else if (modal.open && ['bag', 'map'].includes(modalView)) renderModal();
   }
 }, 500);
-document.addEventListener('visibilitychange', () => { if (!document.hidden) { tick(state); change(); if (modal.open && modalView === 'bag') renderModal(); } });
-save(); renderHome();
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { tick(state); change(); if (modal.open && ['bag', 'map'].includes(modalView)) renderModal(); } });
+renderScene(); save();
 if (!storageAvailable) toast('浏览器暂不支持保存，仍可体验本次完整流程。');
